@@ -19,8 +19,8 @@
   sub: SOC
   color: "#f7b731"   # 橙黄色，社交计算
 
-- name: Mental Health AI
-  sub: MHL
+- name: AI for Mental Health 
+  sub: AI4MH
   color: "#ff9f43"   # 橙色，心理健康 AI
 
 - name: Theory of Mind
