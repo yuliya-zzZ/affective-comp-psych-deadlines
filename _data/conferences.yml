@@ -7,7 +7,7 @@
   timezone: AoE
   date: September 7-10, 2026
   place: Puebla, Mexico
-  sub: Affective,ComputationalPsychology,Multimodal,HCI
+  sub: AFF,PSY,ML               # ← changed to abbreviations
   note: Main track full paper deadline – flagship for affective computing, emotion modeling, multimodal emotion
   priority: ★★★★★
 
@@ -21,8 +21,8 @@
   timezone: AoE
   date: April 13-17, 2026
   place: Barcelona, Spain
-  sub: CHI,HCI,Affective
-  note: HCI flagship; affective interfaces/emotion-aware common. Full paper passed; check late-breaking
+  sub: HCI,PSY,AFF              # ← CHI/HCI + Comp Psych + Affective
+  note: HCI flagship; affective interfaces/emotion-aware common
   priority: ★★★★★
 
 - title: SAS 2026
@@ -34,8 +34,8 @@
   timezone: AoE
   date: March 12-14, 2026
   place: Pittsburgh, Pennsylvania, USA
-  sub: Affective,SAS,ComputationalPsychology
-  note: Affective science core + computational tracks + Preconferences (e.g. Affective Computing)
+  sub: AFF,PSY                  # ← Affective + Comp Psych
+  note: Affective science core + computational tracks + Preconferences
   priority: ★★★★☆
 
 - title: ICMI 2026
@@ -48,7 +48,7 @@
   timezone: AoE
   date: October 5-9, 2026
   place: Napoli, Italy
-  sub: Multimodal,Affective,HCI,ComputationalPsychology
+  sub: HCI,AFF,PSY              # ← HCI + Affective + Comp Psych
   note: Multimodal emotion interaction/affective common
   priority: ★★★★
 
@@ -61,7 +61,7 @@
   timezone: UTC-11
   date: July 22-25, 2026
   place: Rio de Janeiro, Brazil (hybrid)
-  sub: CogSci,ComputationalPsychology,Affective
+  sub: PSY,AFF,TOM              # ← Comp Psych + Affective + Theory of Mind
   note: Computational cognition + emotion models
   priority: ★★★★
 
@@ -74,6 +74,152 @@
   timezone: AoE
   date: May 27-29, 2026
   place: Los Angeles, CA, USA
-  sub: ComputationalPsychology,SocialAffective,NLP
+  sub: PSY,SOC,NLP              # ← Comp Psych + Social + NLP
+
+  # 2027 conferences (🥇 Core main venues – strongly recommended)
+- title: CHI 2027
+  year: 2027
+  id: chi2027
+  full_name: ACM Conference on Human Factors in Computing Systems
+  link: https://chi2027.acm.org/
+  deadline: estimated 2026-09-10 23:59:59  # typical September cycle
+  timezone: AoE
+  date: May 10-14, 2027
+  place: Pittsburgh, Pennsylvania, USA
+  sub: HCI,PSY,AFF,NLP,ML
+  note: HCI flagship; human-AI trust/empathy/ToM/cross-cultural LLM/emotion-aware UI; top priority
+  priority: ★★★★★
+
+- title: ICWSM 2027
+  year: 2027
+  id: icwsm2027
+  full_name: International AAAI Conference on Web and Social Media
+  link: https://icwsm.org/
+  deadline: estimated 2027-01 (third round, rolling)
+  timezone: AoE
+  date: estimated May/June 2027
+  place: TBD (often US/Europe)
+  sub: SOC,NLP,MHL,PSY
+  note: Social media + computational social cognition/depression prediction/NLP emotion; core extension
+  priority: ★★★★★
+
+- title: CSCW 2027
+  year: 2027
+  id: cscw2027
+  full_name: ACM Conference on Computer-Supported Cooperative Work and Social Computing
+  link: https://cscw.acm.org/
+  deadline: estimated 2026-04/05 (rolling cycles)
+  timezone: EDT
+  date: estimated October/November 2027
+  place: TBD
+  sub: HCI,SOC,PSY
+  note: Social computing + online emotion/collaboration/community; psych-friendly main venue
+  priority: ★★★★★
+
+# 2027 conferences (🥈 Strong related extensions)
+- title: IUI 2027
+  year: 2027
+  id: iui2027
+  full_name: ACM Conference on Intelligent User Interfaces
+  link: https://iui.acm.org/
+  deadline: estimated 2026-10
+  timezone: AoE
+  date: estimated July 2027
+  place: TBD
+  sub: HCI,ML,PSY
+  note: Intelligent interfaces + adaptive human-AI interaction; psych extension
+  priority: ★★★★☆
+
+- title: DIS 2027
+  year: 2027
+  id: dis2027
+  full_name: ACM Conference on Designing Interactive Systems
+  link: https://dis.acm.org/
+  deadline: estimated fall 2026
+  timezone: AoE
+  date: estimated summer 2027
+  place: TBD
+  sub: HCI,AFF
+  note: Designing interactive systems + affective/human-centered design; psych-friendly
+  priority: ★★★★☆
+
+# 2027 conferences (AI × human cognition / ethics – strong ToM/bias/trust fit)
+- title: AAAI 2027
+  year: 2027
+  id: aaai2027
+  full_name: AAAI Conference on Artificial Intelligence
+  link: https://aaai.org/Conferences/AAAI-27/
+  deadline: estimated summer 2026 (main track)
+  timezone: AoE
+  date: estimated February 2027
+  place: TBD
+  sub: ML,HCI,TOM
+  note: AAAI main + HAI/Social Impact/Ethics tracks; ToM/AI cognition/ethics fit
+  priority: ★★★★☆
+
+- title: IJCAI 2027
+  year: 2027
+  id: ijcai2027
+  full_name: International Joint Conference on Artificial Intelligence
+  link: https://www.ijcai.org/
+  deadline: estimated winter/spring 2027
+  timezone: AoE
+  date: estimated summer 2027
+  place: TBD
+  sub: ML,HCI,TOM
+  note: IJCAI + human/AI interaction/ethics/ToM tracks; strong fit
+  priority: ★★★★☆
+
+- title: FAccT 2027
+  year: 2027
+  id: facct2027
+  full_name: ACM Conference on Fairness, Accountability, and Transparency
+  link: https://facctconference.org/
+  deadline: estimated winter/spring 2027
+  timezone: AoE
+  date: estimated June 2027
+  place: TBD
+  sub: HCI,ML
+  note: AI fairness/transparency + bias in cognition/ToM/emotion models; ethics fit
+  priority: ★★★★☆
+
+- title: AIES 2027
+  year: 2027
+  id: aies2027
+  full_name: AAAI/ACM Conference on AI, Ethics, and Society
+  link: https://www.aies-conference.org/
+  deadline: estimated spring 2027
+  timezone: AoE
+  date: estimated summer 2027
+  place: TBD
+  sub: HCI,ML
+  note: AI ethics + human cognition/ToM/trust/empathy; very strong fit
+  priority: ★★★★☆
+
+- title: ACL 2027
+  year: 2027
+  id: acl2027
+  full_name: Annual Meeting of the Association for Computational Linguistics
+  link: https://www.aclweb.org/
+  deadline: rolling via ARR (estimated cycles 2027)
+  timezone: AoE
+  date: estimated summer 2027
+  place: TBD
+  sub: NLP,AFF,MHL
+  note: NLP flagship; deception/ToM/language emotion supplement
+  priority: ★★★★☆
+
+- title: EMNLP 2027
+  year: 2027
+  id: emnlp2027
+  full_name: Conference on Empirical Methods in Natural Language Processing
+  link: https://2027.emnlp.org/
+  deadline: estimated spring/summer 2027 (via ARR)
+  timezone: AoE
+  date: estimated fall 2027
+  place: TBD
+  sub: NLP,AFF,MHL
+  note: NLP top-tier; emotion/sentiment/depression text analysis supplement
+  priority: ★★★★☆
   note: Social media emotion analysis/computational language + emotion
   priority: ★★★★★
