@@ -1,6 +1,3 @@
-- name: All
-  sub: ""
-  color: "#cccccc"   # 灰色，全选
 
 - name: Affective Computing
   sub: AFF
