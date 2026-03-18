@@ -1,15 +1,23 @@
-title: AI Conference Deadlines
-description: Countdowns to top CV/NLP/ML/Robotics/AI conference deadlines
-author: Jie Cao
+title: Affective Computational Psychology Conference Deadlines
+description: Countdown timers for affective science, computational psychology, CHI/HCI, emotion-aware computing and related conferences
+author: yayunZ
 
-domain: "mlciv.com"
-baseurl: "/ai-deadlines"
+url: "https://yuliya-zzz.github.io"
+baseurl: "/affective-comp-psych-deadlines"
 
-twitter_hashtag: mlciv_jiessie
-github_username: mlciv
-github_repo: ai-deadlines
-
+# Jekyll setting
 markdown: kramdown
+highlighter: rouge
+
+theme: null
+plugins:
+  - jekyll-feed
+  
+# optional: if have google analytics, or, keep empty
 ga_id:
 
 include: ['_pages']
+
+twitter_hashtag: mlciv_jiessie
+github_username: yuliya-zzZ
+github_repo: affective-comp-psych-deadlines
