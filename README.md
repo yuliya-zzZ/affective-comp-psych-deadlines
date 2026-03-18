@@ -1,6 +1,6 @@
 ## Affective Computational Psychology Conference DDL Tracking
 
-Countdown timers to keep track of a bunch of CHI/AAAL conference deadlines.
+Countdowns for affective science, computational psychology, CHI/HCI and emotion-related conferences
 
 ## Contributing
 
@@ -19,97 +19,34 @@ To add or update a deadline:
 - Optionally add `hindex` (refers to h5-index from [here](https://scholar.google.com/citations?view_op=top_venues&vq=eng))
 - Example:
     ```yaml
-    - title: ACII 2026
-  year: 2026
-  id: acii2026
-  full_name: Affective Computing and Intelligent Interaction
-  link: https://acii-conf.net/2026/
-  deadline: 2026-03-27 23:59:59
-  timezone: AoE
-  date: September 7-10, 2026
-  place: Puebla, Mexico
-  sub: Affective,ComputationalPsychology,Multimodal,HCI
-  note: Main track full paper (absolute flagship for affective computing, emotion modeling, multimodal emotion)
-  priority: ★★★★★
+    - title: ICMI 2026
+      year: 2026
+      id: icmi2026
+      full_name: ACM International Conference on Multimodal Interaction
+      link: https://icmi.acm.org/2026
+      deadline: 2026-04-20 23:59:59  # Paper after abstract 2026-04-13
+      abstract_deadline: 2026-04-13 23:59:59
+      timezone: AoE
+      date: October 5-9, 2026
+      place: Napoli, Italy
+      sub: Multimodal,Affective,HCI,ComputationalPsychology
+      note: Multimodal emotion interaction/affective common; Grand Challenge etc. earlier
+      priority: ★★★★
 
-- title: SAS 2026
-  year: 2026
-  id: sas2026
-  full_name: Society for Affective Science Annual Conference
-  link: https://society-for-affective-science.org/2026-sas-annual-conference
-  deadline: 2025-11-03 23:59:59
-  timezone: AoE
-  date: March 12-14, 2026
-  place: Pittsburgh, Pennsylvania, USA
-  sub: Affective,SAS,ComputationalPsychology
-  note: Submissions closed Nov 3, 2025; affective science core + computational tracks + Preconferences (Mar 12, e.g. Affective Computing)
-  priority: ★★★★☆
 
-- title: CogSci 2026
-  year: 2026
-  id: cogsci2026
-  full_name: Cognitive Science Society Annual Meeting
-  link: https://cognitivesciencesociety.org/cogsci-2026
-  deadline: 2026-02-02 23:59:59
-  timezone: UTC-11  # 官网指定 UTC-11 midnight
-  date: July 22-25, 2026
-  place: Rio de Janeiro, Brazil (hybrid)
-  sub: CogSci,ComputationalPsychology,Affective
-  note: Computational cognition + emotion models; submissions closed Feb 2, 2026
-  priority: ★★★★
-
-- title: CHI 2026
-  year: 2026
-  id: chi2026
-  full_name: ACM Conference on Human Factors in Computing Systems
-  link: https://chi2026.acm.org/
-  deadline: 2025-09-XX 23:59:59  # 预计 Abstract/Full ~ Sep 2025 (典型9月，官网未精确公布 full paper；late-breaking 如 Posters 到 2026-01-22)
-  timezone: AoE
-  date: April 13-17, 2026
-  place: Barcelona, Spain
-  sub: CHI,HCI,Affective
-  note: HCI flagship; affective interfaces/emotion-aware common; check site for exact Sep deadline (past patterns: abstract early Sep, full mid-Sep)
-  priority: ★★★★★
-
-- title: ICMI 2026
-  year: 2026
-  id: icmi2026
-  full_name: ACM International Conference on Multimodal Interaction
-  link: https://icmi.acm.org/2026
-  deadline: 2026-04-20 23:59:59  # Paper after abstract 2026-04-13
-  abstract_deadline: 2026-04-13 23:59:59
-  timezone: AoE
-  date: October 5-9, 2026
-  place: Napoli, Italy
-  sub: Multimodal,Affective,HCI,ComputationalPsychology
-  note: Multimodal emotion interaction/affective common; Grand Challenge etc. earlier
-  priority: ★★★★
-
-- title: ISRE 2026
-  year: 2026
-  id: isre2026
-  full_name: International Society for Research on Emotion
-  link: https://www.isre2026.org/
-  deadline: 2026-05-01 23:59:59  # Late-breaking abstracts; main earlier ~ Dec 2025 extended
-  timezone: AoE
-  date: July 11-14, 2026
-  place: Brisbane, Queensland, Australia
-  sub: Affective,EmotionResearch,ComputationalModels
-  note: Emotion research authority + computational models increasing; possible Affective Preconf
-  priority: ★★★★☆
-
-- title: ICWSM 2026
-  year: 2026
-  id: icwsm2026
-  full_name: International Conference on Web and Social Media
-  link: https://www.icwsm.org/2026/
-  deadline: 2026-01-15 23:59:59  # 3rd round full papers (multi-round: earlier 2025 May/Sep, last Jan 2026)
-  timezone: AoE
-  date: May 27-29, 2026
-  place: Los Angeles, CA, USA
-  sub: ComputationalPsychology,SocialAffective,NLP
-  note: Social media emotion analysis/computational language + emotion; key for social big data affect
-  priority: ★★★★★
+    - title: ICWSM 2026
+      year: 2026
+      id: icwsm2026
+      full_name: International Conference on Web and Social Media
+      link: https://www.icwsm.org/2026/
+      deadline: 2026-01-15 23:59:59  # 3rd round full papers (multi-round: earlier 2025 May/Sep, /n
+    last Jan 2026)
+      timezone: AoE
+      date: May 27-29, 2026
+      place: Los Angeles, CA, USA
+      sub: ComputationalPsychology,SocialAffective,NLP
+      note: Social media emotion analysis/computational language + emotion; key for social big data affect
+      priority: ★★★★★
     ```
 - Send a pull request
 
