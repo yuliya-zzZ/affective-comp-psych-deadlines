@@ -1,4 +1,4 @@
----
+{% assign all_conferences = site.data.conferences | sort: 'deadline' | reverse %}---
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +66,8 @@
 
         <div id="confs">
         <div id="coming_confs">
-          {% assign all_conferences = site.data.conferences | sort: 'deadline' | reverse %}
+          {% assign sorted_conferences = site.data.conferences | sort: 'deadline' %}
+          {% assign all_conferences = sorted_conferences | reverse %}
           {% for conf in all_conferences %}
           <div id="{{conf.id}}" class="ConfItem {% for sub in conf.sub %} {{sub}}-conf {% endfor %}">
             <div class="row conf-row">
