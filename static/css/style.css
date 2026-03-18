@@ -1,9 +1,20 @@
-/* Tag colors */
-.conf-sub.AFF-tag { background: #ff6b6b; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.PSY-tag { background: #4ecdc4; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.HCI-tag { background: #45b7d1; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.NLP-tag { background: #a55eea; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.SOC-tag { background: #f7b731; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.MHL-tag { background: #ff9f43; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.TOM-tag { background: #ee5253; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
-.conf-sub.ML-tag  { background: #341f97; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 6px; font-size: 0.9em; }
+/* Conference sub tags */
+.conf-sub {
+  display: inline-block;
+  padding: 4px 8px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  color: white;
+}
+
+.conf-sub.AFF-tag { background: #ff6b6b; }  /* pink for affective */
+.conf-sub.PSY-tag { background: #4ecdc4; }  /* teal for comp psych */
+.conf-sub.NLP-tag { background: #a55eea; }  /* purple for NLP */
+.conf-sub.HCI-tag { background: #45b7d1; }  /* blue for HCI */
+.conf-sub.SOC-tag { background: #f7b731; }  /* orange for social */
+.conf-sub.MHL-tag { background: #ff9f43; }  /* orange for mental health */
+.conf-sub.TOM-tag { background: #ee5253; }  /* red for ToM */
+.conf-sub.ML-tag  { background: #341f97; }  /* deep blue for ML */
