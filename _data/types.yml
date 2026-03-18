@@ -1,34 +1,35 @@
----
-- name: Machine Learning
-  sub: ML
-  color: "#ffd300"
-- name: Computer Vision
-  sub: CV
-  color: "#deff0a"
-- name: Computer Graphics
-  sub: CG
-  color: "#0aefff"
-- name: Natural Language Proc
+- name: All
+  sub: ""
+  color: "#cccccc"   # 灰色，全选
+
+- name: Affective Computing
+  sub: AFF
+  color: "#ff6b6b"   # 粉红，情感核心
+
+- name: Computational Psychology
+  sub: PSY
+  color: "#4ecdc4"   # 青绿色，计算心理学
+
+- name: Natural Language Processing
   sub: NLP
-  color: "#147df5"
-- name: Robotics
-  sub: RO
-  color: "#0aff99"
-- name: Speech/SigProc
-  sub: SP
-  color: "#580aff"
-- name: Data Mining
-  sub: DM
-  color: "#be0aff"
-- name: Automated Planning
-  sub: AP
-  color: "#a432a8"
-- name: Knowledge Representation
-  sub: KR
-  color: "#32a855"
+  color: "#a55eea"   # 紫色，情感语言分析
+
 - name: Human-Computer Interaction
   sub: HCI
-  color: "#a83232"
-- name: AI4Education
-  sub: EDU
-  color: "#FF5733"
+  color: "#45b7d1"   # 天蓝色，HCI 经典
+
+- name: Social / Computational Social
+  sub: SOC
+  color: "#f7b731"   # 橙黄色，社交计算
+
+- name: Mental Health AI
+  sub: MHL
+  color: "#ff9f43"   # 橙色，心理健康 AI
+
+- name: Theory of Mind
+  sub: TOM
+  color: "#ee5253"   # 红色，心智理论
+
+- name: Machine Learning
+  sub: ML
+  color: "#341f97"   # 深蓝，ML 基础
