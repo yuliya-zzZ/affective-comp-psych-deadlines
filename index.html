@@ -63,8 +63,8 @@
             </div>
         </div>
 
-        <!-- Debug line: delete later -->
-        <p>Debug: Loaded {{ site.data.conferences | size }} conferences from conferences.yml</p>
+        <!-- Debug: 确认数据加载 -->
+        <p style="color: red; font-weight: bold;">Debug: Loaded {{ site.data.conferences | size }} conferences from conferences.yml (should be 6 or more)</p>
 
         <div id="confs">
         <div id="coming_confs">
@@ -149,83 +149,90 @@
     </div>
     <script type="text/javascript" charset="utf-8">
     $(function() {
-        // Make sure this is >= no. of subs
-        // Currently not used
-        var colors = ['#341f97', '#ee5253', '#2e86de',
-                      '#ff9f43', '#10ac84', '#222f3e']
+        var colors = ['#341f97', '#ee5253', '#2e86de', '#ff9f43', '#10ac84', '#222f3e'];
         {% include load_data.js %}
         {% include utils.js %}
         {% include multiselect_handler.js %}
-        // {% include load_conferences.html %}  // 已注释，避免冲突
-        {% include predict_potential_calls.js %}
-        // Make conference data available to JavaScript for predictions
+        // 注释掉 predict_potential_calls.js，减少外部请求
+        // {% include predict_potential_calls.js %}
+
+        // 直接用 Liquid 生成的 all_conferences 数据
         var all_conferences_data = {{ all_conferences | jsonify }};
+
+        // Debug: 看控制台是否收到数据
+        console.log("Loaded conferences in JS:", all_conferences_data);
+
         addUtcTimeZones();
+
         try {
           var local_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
           $('.local-timezone').text(local_timezone.toString());
-        }
-        catch(err) {
+        } catch(err) {
           $('.local-timezone-hide').hide();
         }
+
+        // 为每个会议渲染倒计时（实时，每秒更新）
         {% for conf in all_conferences %}
-        {% for sub in conf.sub %}
-        $('#{{conf.id}} .{{sub}}-tag').html(sub2name["{{sub}}"].toLocaleLowerCase());
-        {% endfor %}
-        {% if conf.deadline == "TBA" %}
-          $('#{{conf.id}} .timer').html("TBA");
-          $('#{{conf.id}} .deadline-time').html("TBA");
-          $('#{{conf.id}}').attr("diff", "999999");
-        {% else %}
-          // adjust date according to deadline timezone
-          var timezone = {% if conf.timezone %}"{{conf.timezone}}" {% else %} "America/New_York" {% endif %};
-          var confDate = moment.tz("{{conf.deadline}}", timezone);
-          // render countdown timer
-          $('#{{conf.id}} .timer').countdown(confDate.toDate(), function (event) {
+        (function() {  // 闭包，避免变量冲突
+          var confId = '{{conf.id}}';
+          var timezone = {% if conf.timezone %}"{{conf.timezone}}"{% else %}"America/New_York"{% endif %};
+          var deadlineStr = "{{conf.deadline}}";
+          var confDate = moment.tz(deadlineStr, timezone);
+
+          if (confDate.isValid()) {
+            // 实时倒计时
+            $('#' + confId + ' .timer').countdown(confDate.toDate(), function(event) {
               $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-          });
-          // render countdown timer small
-          $('#{{conf.id}} .timer-small').countdown(confDate.toDate(), function (event) {
+            });
+
+            $('#' + confId + ' .timer-small').countdown(confDate.toDate(), function(event) {
               $(this).html(event.strftime('%Dd %H:%M:%S'));
-          });
-          // convert deadline to local timezone
-          try {
-            var localConfDate = moment.tz(confDate, local_timezone);
-            $('#{{conf.id}} .deadline-time').html(localConfDate.toString());
-          }
-          catch(err) {
-            console.log("Error converting to local timezone.");
-          }
-          // add calendar button
-          var myCalendar = createCalendarFromObject({
-            id: '{{conf.id}}',
-            title: '{{conf.title}} {{conf.year}} deadline',
-            date: confDate.toDate(),
-            duration: 60,
-          })
-          document.querySelector('#{{conf.id}} .calendar').appendChild(myCalendar);
-          // check if date has passed, add 'past' class to it
-          var today = moment();
-          diff = today.diff(confDate, 'days');
-          $('#{{conf.id}}').attr("diff", diff)
-          if (diff > 0) {
-            $('#{{conf.id}}').addClass('past');
-            $('#{{conf.id}} .timer').replaceWith($('#{{conf.id}} .deadline'));
-            $('#{{conf.id}} .timer-small').replaceWith($('#{{conf.id}} .deadline'));
-            $('#{{conf.id}} .calendar').remove();
-            if (diff < 366) {
-              $('#{{conf.id}}').appendTo($("#past_confs"))
-            } else{
-              $('#{{conf.id}}').remove();
+            });
+
+            // 本地时间显示
+            try {
+              var localConfDate = moment.tz(confDate, local_timezone);
+              $('#' + confId + ' .deadline-time').html(localConfDate.format('ddd MMM DD YYYY HH:mm:ss z'));
+            } catch(err) {
+              $('#' + confId + ' .deadline-time').html(confDate.format('ddd MMM DD YYYY HH:mm:ss z'));
             }
+
+            // calendar 导出
+            var myCalendar = createCalendarFromObject({
+              id: confId,
+              title: '{{conf.title}} {{conf.year}} deadline',
+              date: confDate.toDate(),
+              duration: 60,
+            });
+            document.querySelector('#' + confId + ' .calendar').appendChild(myCalendar);
+
+            // 检查是否过期
+            var today = moment();
+            var diff = today.diff(confDate, 'days');
+            $('#' + confId).attr("diff", diff);
+            if (diff > 0) {
+              $('#' + confId).addClass('past');
+              $('#' + confId + ' .timer').replaceWith($('#' + confId + ' .deadline'));
+              $('#' + confId + ' .timer-small').replaceWith($('#' + confId + ' .deadline'));
+              $('#' + confId + ' .calendar').remove();
+              if (diff < 366) {
+                $('#' + confId).appendTo($("#past_confs"));
+              } else {
+                $('#' + confId).remove();
+              }
+            }
+          } else {
+            $('#' + confId + ' .timer').html("Invalid Deadline");
           }
-        {% endif %}
+        })();
         {% endfor %}
-        // Sort coming_confs and past_confs by deadline (numeric diff, Safari-safe: use Array.sort)
+
+        // 排序（保持原样）
         function getDiff(el) {
           var d = parseInt($(el).attr('diff'), 10);
           return (d === d) ? d : 999999;
         }
+
         function sortComingByDeadline() {
           var $container = $("#coming_confs");
           var items = $container.children(".ConfItem").get();
@@ -234,6 +241,7 @@
           });
           $container.append(items);
         }
+
         function sortPastByDeadline(mostRecentFirst) {
           var $container = $("#past_confs");
           var items = $container.children(".ConfItem").get();
@@ -242,12 +250,15 @@
           });
           $container.append(items);
         }
+
         sortComingByDeadline();
         $("#sort-order-checkbox input").on("click", function() {
           sortPastByDeadline($("#sort-order-checkbox input").is(":checked"));
         });
+
         {% include handle_url_retrieval.js %}
-        // Event handler on sub badge click
+
+        // sub tag click handler (保持原样)
         $('.conf-sub').click(function (e) {
             var csub = $(this).data('sub');
             subs = [csub];
@@ -255,57 +266,6 @@
             $("#subject-select").multiselect('select', subs);
             update_filtering({ subs: subs, all_subs: all_subs});
         });
-        // Generate and display potential call for papers
-        if (typeof all_conferences_data !== 'undefined' && all_conferences_data.length > 0) {
-            var predictions = predictPotentialCalls(all_conferences_data);
-            // Verify predictions by fetching actual deadlines from websites
-            if (predictions.length > 0) {
-                var verificationPromises = [];
-                for (var i = 0; i < predictions.length; i++) {
-                    var pred = predictions[i];
-                    if (pred.needsVerification && pred.link && pred.link !== '#') {
-                        // Try to verify deadline from website
-                        var verifyPromise = fetchConferenceDeadline(pred.link, pred.predictedYear)
-                            .then(function(result) {
-                                // Update prediction with actual deadline if found
-                                if (result.deadline) {
-                                    pred.verifiedDeadline = result.deadline;
-                                    pred.verifiedLink = result.link;
-                                    // Update predicted deadline if verified one is different
-                                    var verifiedDate = moment.tz(result.deadline, pred.timezone);
-                                    if (verifiedDate.isValid()) {
-                                        pred.predictedDeadline = verifiedDate;
-                                        pred.predictedDeadlineString = verifiedDate.format('YYYY-MM-DD HH:mm:ss');
-                                        pred.daysUntil = verifiedDate.diff(moment(), 'days');
-                                        pred.verified = true;
-                                    }
-                                }
-                            })
-                            .catch(function(error) {
-                                // If verification fails, keep prediction as is
-                                console.log('Could not verify deadline for ' + pred.title + ' ' + pred.predictedYear);
-                            });
-                        verificationPromises.push(verifyPromise);
-                    }
-                }
-                // Wait for all verifications to complete (or timeout), then render
-                var allSettled = Promise.allSettled || function(promises) {
-                    return Promise.all(promises.map(function(p) {
-                        return p.then(function(value) {
-                            return { status: 'fulfilled', value: value };
-                        }).catch(function(reason) {
-                            return { status: 'rejected', reason: reason };
-                        });
-                    }));
-                };
-               
-                allSettled(verificationPromises).then(function() {
-                    renderPotentialCalls(predictions);
-                    // Apply filtering to potential calls as well
-                    update_filtering({ subs: subs, all_subs: all_subs});
-                });
-            }
-        }
     });
     {% include google_analytics.js %}
     </script>
