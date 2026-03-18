@@ -3,12 +3,9 @@
 Countdowns for affective science, computational psychology, CHI/HCI and emotion-related conferences
 
 ## Contributing
-
-[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/0)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/0)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/1)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/1)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/2)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/2)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/3)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/3)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/4)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/4)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/5)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/5)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/6)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/6)[![](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/images/7)](https://sourcerer.io/fame/abhshkdz/abhshkdz/ai-deadlines/links/7)
-
 Contributions are very welcome!
-
-To keep things minimal, I'm only looking to list top-tier conferences in AI as per [conferenceranks.com][6] and my judgement calls. Please feel free to maintain a separate fork if you don't see your sub-field or conference of interest listed.
+This fork focuses on affective science, computational psychology, CHI/HCI, and emotion-related fields.  
+If you see a missing conference or incorrect deadline, feel free to add/update it.
 
 To add or update a deadline:
 - Fork the repository
@@ -25,7 +22,7 @@ To add or update a deadline:
       full_name: Affective Computing and Intelligent Interaction
       link: https://acii-conf.net/2026/
       deadline: 2026-03-27 23:59:59
-      timezone: AoE
+      timezone: AoE # Anywhere on Earth
       date: September 7-10, 2026
       place: Puebla, Mexico
       sub: Affective,ComputationalPsychology,Multimodal,HCI
@@ -35,25 +32,14 @@ To add or update a deadline:
     ```
 - Send a pull request
 
-## Forks & other useful listings
+## Related Deadline Trackers
 
-- [geodeadlin.es][3] by @LukasMosser
-- [neuro-deadlines][4] by @tbryn
-- [ai-challenge-deadlines][5] by @dieg0as
-- [CV-oriented ai-deadlines (with an emphasis on medical images)][8] by @duducheng
-- [es-deadlines (Embedded Systems, Computer Architecture, and Cyber-physical Systems)][9] by @AlexVonB and @k0nze
-- [2019-2020 International Conferences in AI, CV, DM, NLP and Robotics][10] by @JackieTseng
-- [ccf-deadlines][11] by @ccfddl
-- [networking-deadlines (Computer Networking, Measurement)][12] by @andrewcchu
-- [ad-deadlines.com][13] by @daniel-bogdoll
-- [sec-deadlines.github.io/ (Security and Privacy)][14] by @clementfung
-- [pythondeadlin.es][15] by @jesperdramsch
-- [deadlines.openlifescience.ai (Healthcare domain conferences and workshops)][16] by @monk1337
-- [hci-deadlines.github.io (Human-Computer Interaction conferences)][17] by @makinteract
-- [ds-deadlines.github.io (Distributed Systems, Event-based Systems, Performance, and Software Engineering conferences)][18] by @ds-deadlines
-- [https://deadlines.cpusec.org/ (Computer Architecture-Security conferences)][19] by @hoseinyavarzadeh
-- [se-deadlines.github.io (Software engineering conferences)][20] by @sivanahamer and @imranur-rahman
-- [awesome-mlss (Machine Learning Summer Schools)][21] by @sshkhr and @gmberton
+- [hci-deadlines.github.io](https://hci-deadlines.github.io/) by @makinteract – Human-Computer Interaction conferences (very relevant for CHI/HCI)
+- [neuro-deadlines](https://github.com/tbryn/neuro-deadlines) by @tbryn – Neuroscience-related deadlines (useful for computational psych overlap)
+- [deadlines.openlifescience.ai](https://deadlines.openlifescience.ai/) by @monk1337 – Healthcare and life science domain (some overlap with affective science)
+
+** This project is a fork of the original [ai-deadlines](https://github.com/mlciv/ai-deadlines), customized for affective science, computational psychology, and CHI/HCI！
+
 
 ## License
 
