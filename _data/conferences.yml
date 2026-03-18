@@ -222,4 +222,17 @@
   note: NLP top-tier; emotion/sentiment/depression text analysis supplement
   priority: ★★★★☆
   note: Social media emotion analysis/computational language + emotion
+
+  - title: NeurIPS 2027
+  year: 2027
+  id: neurips2027
+  full_name: Conference on Neural Information Processing Systems
+  link: https://neurips.cc/
+  deadline: estimated 2027-05 (main track, based on historical May cycle)
+  timezone: AoE
+  date: estimated December 2027
+  place: TBD (often US/Canada)
+  sub: ML,PSY,TOM,HCI
+  note: top conf，cognition/ToM/emotion modeling/mental health/social AI  + workshop；AI × human cognition
+  priority: ★★★★☆
   priority: ★★★★★
