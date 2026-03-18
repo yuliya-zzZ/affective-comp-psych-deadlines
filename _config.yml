@@ -1,23 +1,27 @@
 title: Affective Computational Psychology Conference Deadlines
 description: Countdown timers for affective science, computational psychology, CHI/HCI, emotion-aware computing and related conferences
-author: yayunZ
+
+author: yayunZ   # name
 
 url: "https://yuliya-zzz.github.io"
-baseurl: "/affective-comp-psych-deadlines"
+baseurl: "/affective-comp-psych-deadlines"   
 
-# Jekyll setting
+timezone: AoE   
+
 markdown: kramdown
 highlighter: rouge
 
-theme: null
+theme: null   
+
 plugins:
   - jekyll-feed
-  
-# optional: if have google analytics, or, keep empty
+
+include:
+  - '_pages'
+
+# optional: if you have google analysis, or, empty
 ga_id:
 
-include: ['_pages']
 
-twitter_hashtag: mlciv_jiessie
-github_username: yuliya-zzZ
-github_repo: affective-comp-psych-deadlines
+# github_username: yuliya-zzZ
+# github_repo: affective-comp-psych-deadlines
