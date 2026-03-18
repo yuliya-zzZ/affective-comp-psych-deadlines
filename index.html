@@ -64,7 +64,7 @@
         </div>
         <div id="confs">
         <div id="coming_confs">
-          {% include load_conferences.html %}
+          {% assign all_conferences = site.data.conferences | sort: 'deadline' | reverse %}
           {% for conf in all_conferences %}
           <div id="{{conf.id}}" class="ConfItem {% for sub in conf.sub %} {{sub}}-conf {% endfor %}">
             <div class="row conf-row">
