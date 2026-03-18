@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <!-- Debug: 确认数据加载，完成后可删除 -->
+        <!-- Debug: 完成后可删除 -->
         <p style="color: green; font-weight: bold;">Debug: Loaded {{ site.data.conferences | size }} conferences from conferences.yml</p>
 
         <div id="confs">
@@ -157,7 +157,7 @@
         // {% include predict_potential_calls.js %}
 
         var all_conferences_data = {{ all_conferences | jsonify }};
-        console.log("JS loaded conferences:", all_conferences_data); // Console debug
+        console.log("JS loaded conferences:", all_conferences_data);
 
         addUtcTimeZones();
 
@@ -177,14 +177,17 @@
           var confDate = moment.tz(deadlineStr, timezone);
 
           if (confDate.isValid()) {
+            // 大倒计时
             $('#' + confId + ' .timer').countdown(confDate.toDate(), function(event) {
               $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
             });
 
+            // 小倒计时
             $('#' + confId + ' .timer-small').countdown(confDate.toDate(), function(event) {
               $(this).html(event.strftime('%Dd %H:%M:%S'));
             });
 
+            // 本地时间显示
             try {
               var localConfDate = moment.tz(confDate, local_timezone);
               $('#' + confId + ' .deadline-time').html(localConfDate.format('ddd MMM DD YYYY HH:mm:ss z'));
@@ -192,6 +195,7 @@
               $('#' + confId + ' .deadline-time').html(confDate.format('ddd MMM DD YYYY HH:mm:ss z'));
             }
 
+            // calendar 导出
             var myCalendar = createCalendarFromObject({
               id: confId,
               title: '{{conf.title}} {{conf.year}} deadline',
@@ -200,6 +204,7 @@
             });
             document.querySelector('#' + confId + ' .calendar').appendChild(myCalendar);
 
+            // 过期检查
             var today = moment();
             var diff = today.diff(confDate, 'days');
             $('#' + confId).attr("diff", diff);
@@ -220,7 +225,7 @@
         })();
         {% endfor %}
 
-        // 排序函数保持原样
+        // 排序
         function getDiff(el) {
           var d = parseInt($(el).attr('diff'), 10);
           return (d === d) ? d : 999999;
