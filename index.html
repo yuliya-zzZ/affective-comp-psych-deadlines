@@ -52,31 +52,29 @@
               <div class="meta col-12">
                 <span class="local-timezone-hide">
                   Deadlines are shown in <span class="local-timezone">America/New_York</span> time.
-                  To view them in conference website timezones, click on them.
+                  Each track lists its official timezone and your local time.
                 </span>
               </div>
-              <div class="meta col-12">
-                You can optionally export all deadlines to
-                <a href="https://calendar.google.com/calendar/r?cid={{ site.url }}/ai-deadlines.ics">Google Calendar</a> or
-                <a href="/ai-deadlines.ics">.ics</a>.
-              </div>
+              <div class="meta col-12 track-legend">Full paper and poster submissions are listed separately. Unannounced dates have no countdown. Add confirmed upcoming tracks to your calendar with .ics.</div>
             </div>
         </div>
 
 
         <div id="confs">
         <div id="coming_confs">
-          {% assign sorted_conferences = site.data.conferences | sort: 'deadline' %}
-          {% assign all_conferences = sorted_conferences | reverse %}
+          <h2 class="section-title">Upcoming submission deadlines</h2>
+          <p class="section-description">A conference stays here while any listed submission track is still upcoming.</p>
+          {% assign all_conferences = site.data.conferences %}
           {% for conf in all_conferences %}
-          <div id="{{conf.id}}" class="ConfItem {% for sub in conf.sub %} {{sub}}-conf {% endfor %}">
+          {% assign conf_subs = conf.sub | split: "," %}
+          <div id="{{conf.id}}" class="ConfItem {% for sub in conf_subs %} {{sub}}-conf {% endfor %}">
             <div class="row conf-row">
                 <div class="col-6">
                   <span class="conf-title">
                       <a title="{% if conf.full_name %}{{conf.full_name}}{% else %}Deadline{% endif %} Details" href="{{site.baseurl}}/conference?id={{ conf.id }}">{{conf.title}} {{conf.year}}</a>
                   </span>
                   <span class="conf-title-small">
-                      <a title="{% if conf.full_name %}{{conf.full_name}}{% else %}Deadline{% endif %} Details" href="{{site.baseurl}}/conference?id={{ conf.id }}">{{conf.title}} '{{conf.year | slice: -2, 3}}</a>
+                      <a title="{% if conf.full_name %}{{conf.full_name}}{% else %}Deadline{% endif %} Details" href="{{site.baseurl}}/conference?id={{ conf.id }}">{{conf.title}} {{conf.year}}</a>
                   </span>
                   <span class="conf-title-icon">
                     <a title="Conference Website" href="{{conf.link}}" target="_blank"><img src="{{site.baseurl}}/static/img/203-earth.svg" class="badge-link" alt="Link to Conference Website" /></a>
@@ -92,6 +90,7 @@
                   </span>
                 </div>
                 <div class="col-6">
+                  <span class="next-track"></span>
                   <span class="timer"></span>
                   <span class="timer-small"></span>
                 </div>
@@ -114,19 +113,12 @@
                   </div>
                 {% endif %}
               </div>
-              <div class="col-12 col-sm-6">
-                <div class="deadline">
-                  <div>Deadline:
-                    <span class="deadline-time"></span>
-                  </div>
-                </div>
-                <div class="calendar"></div>
-              </div>
             </div>
+            <div class="track-deadlines" aria-label="Submission deadlines"></div>
             <div class="row">
               <div class="col-12">
-                {% for sub in conf.sub %}
-                <span title="Click to only show {{sub}} conferences" data-sub="{{sub}}" class="conf-sub {{sub}}-tag"></span>
+                {% for sub in conf_subs %}
+                <span title="Click to only show {{sub}} conferences" data-sub="{{sub | strip}}" class="conf-sub {{sub}}-tag">{{sub}}</span>
                 {% endfor %}
               </div>
             </div>
@@ -134,8 +126,12 @@
           </div>
           {% endfor %}
         </div>
+        <div id="planning_confs">
+          <h2 class="section-title">2027–2028 · awaiting submission dates</h2>
+          <p class="section-description">Keep these editions on your radar. Dates and submission routes will be updated when their official calls are published.</p>
+        </div>
         <div id="past_confs">
-          <h1 id="past-events-title">Past Events</h1>
+          <h2 id="past-events-title">Past submission deadlines</h2>
           <div id="sort-order-checkbox">
                 <label for="sort-order"><input type="checkbox" id="sort-order" name="sort-order" checked>Most recent first</label>
             </div>
@@ -148,121 +144,43 @@
     </div>
     <script type="text/javascript" charset="utf-8">
     $(function() {
-      var sub2name = {
-        "AFF": "Affective Computing",
-        "PSY": "Computational Psychology",
-        "NLP": "Natural Language Processing",
-        "HCI": "Human-Computer Interaction",
-        "SOC": "Social / Computational Social",
-        "MHL": "Mental Health AI",
-        "TOM": "Theory of Mind",
-        "ML": "Machine Learning"
-      };
-        var colors = ['#341f97', '#ee5253', '#2e86de', '#ff9f43', '#10ac84', '#222f3e'];
         {% include load_data.js %}
         {% include utils.js %}
         {% include multiselect_handler.js %}
-        // 注释 predict 以避免延迟
-        // {% include predict_potential_calls.js %}
-
-        var all_conferences_data = {{ all_conferences | jsonify }};
-   
-
-        addUtcTimeZones();
-
-        try {
-          var local_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-          $('.local-timezone').text(local_timezone.toString());
-        } catch(err) {
-          $('.local-timezone-hide').hide();
-        }
-
-        // 实时倒计时（每秒更新）
-        {% for conf in all_conferences %}
-        (function() {
-          var confId = '{{conf.id}}';
-          var timezone = {% if conf.timezone %}"{{conf.timezone}}"{% else %}"America/New_York"{% endif %};
-          var deadlineStr = "{{conf.deadline}}";
-          var confDate = moment.tz(deadlineStr, timezone);
-
-          if (confDate.isValid()) {
-            // 大倒计时
-            $('#' + confId + ' .timer').countdown(confDate.toDate(), function(event) {
-              $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-            });
-
-            // 小倒计时
-            $('#' + confId + ' .timer-small').countdown(confDate.toDate(), function(event) {
-              $(this).html(event.strftime('%Dd %H:%M:%S'));
-            });
-
-            // 本地时间显示
-            try {
-              var localConfDate = moment.tz(confDate, local_timezone);
-              $('#' + confId + ' .deadline-time').html(localConfDate.format('ddd MMM DD YYYY HH:mm:ss z'));
-            } catch(err) {
-              $('#' + confId + ' .deadline-time').html(confDate.format('ddd MMM DD YYYY HH:mm:ss z'));
+        var conferences = {{ site.data.conferences | jsonify }};
+        $('.local-timezone').text(Intl.DateTimeFormat().resolvedOptions().timeZone);
+        var previousGroups = {};
+        var previousStatuses = {};
+        function refresh() {
+          var now = Date.now();
+          conferences.forEach(function (conf) {
+            var card = document.getElementById(conf.id);
+            var info = DeadlineTracks.summary(conf, now);
+            card.dataset.deadlineSort = info.sort;
+            if (previousGroups[conf.id] !== info.group) {
+              document.getElementById({upcoming:'coming_confs',planning:'planning_confs',past:'past_confs'}[info.group]).appendChild(card);
+              previousGroups[conf.id] = info.group;
             }
-
-            // calendar 导出
-            var myCalendar = createCalendarFromObject({
-              id: confId,
-              title: '{{conf.title}} {{conf.year}} deadline',
-              date: confDate.toDate(),
-              duration: 60,
-            });
-            document.querySelector('#' + confId + ' .calendar').appendChild(myCalendar);
-
-            // 过期检查
-            var today = moment();
-            var diff = today.diff(confDate, 'days');
-            $('#' + confId).attr("diff", diff);
-            if (diff > 0) {
-              $('#' + confId).addClass('past');
-              $('#' + confId + ' .timer').replaceWith($('#' + confId + ' .deadline'));
-              $('#' + confId + ' .timer-small').replaceWith($('#' + confId + ' .deadline'));
-              $('#' + confId + ' .calendar').remove();
-              if (diff < 366) {
-                $('#' + confId).appendTo($("#past_confs"));
-              } else {
-                $('#' + confId).remove();
-              }
-            }
-          } else {
-            $('#' + confId + ' .timer').html("Invalid Deadline");
-          }
-        })();
-        {% endfor %}
-
-        // 排序
-        function getDiff(el) {
-          var d = parseInt($(el).attr('diff'), 10);
-          return (d === d) ? d : 999999;
-        }
-
-        function sortComingByDeadline() {
-          var $container = $("#coming_confs");
-          var items = $container.children(".ConfItem").get();
-          items.sort(function (a, b) {
-            return getDiff(b) - getDiff(a);
+            var signature=conf.tracks.map(function(t) {var d=DeadlineTracks.parse(t);return d && d.valueOf()>now;}).join();
+            if (previousStatuses[conf.id] !== signature) DeadlineTracks.renderTable(card.querySelector('.track-deadlines'),conf,now);
+            previousStatuses[conf.id]=signature;
+            card.querySelector('.next-track').textContent = info.next ? 'Next: ' + info.next.track.label : '';
+            card.querySelector('.timer').textContent = info.next ? DeadlineTracks.countdown(info.next.date, now) : (info.group === 'planning' ? 'Dates pending' : conf.tracks.every(function(t) {return !DeadlineTracks.parse(t);}) ? 'Needs verification' : 'Submissions closed');
+            card.querySelector('.timer-small').textContent = card.querySelector('.timer').textContent;
           });
-          $container.append(items);
+          sortCards('coming_confs', false);
+          sortCards('planning_confs', false);
+          sortCards('past_confs', $('#sort-order').is(':checked'));
         }
-
-        function sortPastByDeadline(mostRecentFirst) {
-          var $container = $("#past_confs");
-          var items = $container.children(".ConfItem").get();
-          items.sort(function (a, b) {
-            return mostRecentFirst ? getDiff(a) - getDiff(b) : getDiff(b) - getDiff(a);
-          });
-          $container.append(items);
+        function sortCards(id, descending) {
+          var container = document.getElementById(id);
+          Array.from(container.children).filter(function(n) {return n.classList.contains('ConfItem');}).sort(function(a,b) {
+            return (Number(a.dataset.deadlineSort)-Number(b.dataset.deadlineSort)) * (descending ? -1 : 1);
+          }).forEach(function(card) {container.appendChild(card);});
         }
-
-        sortComingByDeadline();
-        $("#sort-order-checkbox input").on("click", function() {
-          sortPastByDeadline($("#sort-order-checkbox input").is(":checked"));
-        });
-
+        refresh();
+        setInterval(refresh, 1000);
+        $('#sort-order').on('change', refresh);
         {% include handle_url_retrieval.js %}
 
         $('.conf-sub').click(function (e) {

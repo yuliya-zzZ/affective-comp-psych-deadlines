@@ -69,3 +69,34 @@ It uses:
 [19]: https://deadlines.cpusec.org/
 [20]: https://se-deadlines.github.io/
 [21]: https://awesome-mlss.com/
+
+## Submission tracks and future editions
+
+Use the acronym only in `title` (for example `CogSci`), with the edition in `year`.
+Each conference now has a `tracks` list, shared by Countdowns, conference details,
+and Calendar. `deadline` at conference level is retained for compatibility; the
+website uses track dates to decide which submissions are upcoming.
+
+```yaml
+tracks:
+  - id: poster
+    label: Poster
+    kind: poster # paper, poster, or abstract
+    status: confirmed # confirmed, not_announced, or unverified
+    deadline: "2027-01-21 23:59:59"
+    timezone: AoE
+    source: https://chi2027.acm.org/authors/posters/
+```
+
+Only `confirmed` tracks with a complete timestamp and recognized timezone get a
+countdown or calendar export. Use `not_announced` with no deadline for future
+calls; never insert `estimated ...` into a timestamp. Use `unverified` when an
+existing claim cannot be checked. Add `note` to explain track-specific rules and
+`last_checked` to record the verification date. A poster presentation of a full
+paper is different from a separate poster/extended-abstract submission route.
+
+The current update includes CogSci 2027 and 2028, CHI 2027 Posters, and ICWSM 2027
+paper rounds. Official sources are linked beside each track. The source checks
+were performed on October 29, 2026. SAS 2026 submission details remain explicitly
+unverified. CogSci 2028's city is named on the Society's Get Involved page; its
+meeting dates and submission rules have not been announced there.

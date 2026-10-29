@@ -9,7 +9,7 @@ if (subs == undefined) {
 
 // Apply selections
 if (subs == undefined) {
-  subs = all_subs;
+  subs = all_subs.slice();
 }
 $("#subject-select").multiselect("select", subs);
 update_filtering({ subs: subs, all_subs: all_subs });

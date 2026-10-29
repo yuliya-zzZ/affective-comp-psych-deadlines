@@ -342,3 +342,34 @@ footer {
 .calendar img {
   height: 20px;
 }
+
+/* Submission tracks retain the template's compact list layout. */
+.section-title { margin: 28px 0 6px; font-size: 24px; }
+.section-description { font-size: 13px; color: #62676b; margin-bottom: 18px; text-align: left; }
+.track-legend { margin-top: 5px; color: #62676b; }
+.next-track { display: block; font-size: 12px; color: #62676b; }
+.track-table { width: 100%; margin: 10px 0; font-size: 13px; line-height: 1.5; }
+.track-table th, .track-table td { padding: 9px 10px; border-top: 1px solid #e9ecef; vertical-align: top; }
+.track-table thead th { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #62676b; background: #f6f7f8; }
+.track-table tbody th { width: 38%; font-weight: 500; }
+.track-note, .track-local, .track-source { display: block; margin-top: 3px; font-size: 11px; font-weight: 400; color: #62676b; }
+.track-source { width: fit-content; }
+.track-status { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
+.track-open { color: #21644f; background: #e6f3ec; }
+.track-muted { color: #62676b; background: #f0f1f2; }
+#planning_confs .ConfItem { border-left: 3px solid #d9b674; padding-left: 12px; }
+#planning_confs .timer, #past_confs .timer { font-size: 14px; color: #62676b; }
+#conf-track-summary { font-size: 22px; margin: 20px 0; }
+@media (max-width: 576px) {
+  .track-table { font-size: 12px; }
+  .track-table th, .track-table td { padding: 7px 4px; }
+  .track-table tbody th { width: 33%; }
+  .track-note { font-size: 10px; }
+  .navbar-brand { font-size: 16px; }
+  .timer-small { font-size: 14px; }
+  .section-title { font-size: 21px; }
+}
+@media (max-width: 576px) {
+  .ConfItem .conf-date, .ConfItem .conf-place { display: inline; }
+  .ConfItem .note { display: block; }
+}

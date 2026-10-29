@@ -51,29 +51,9 @@ permalink:  /conference/
             <a id="conf-pwclink" target="_blank" nohref></a>
           </div>
         </div>
-        <div id="conf-deadline-info" class="row">
-          <div class="meta deadline col-12 col-md-6">
-            Download Conference deadline:
-          </div>
-          <div id="conference-deadline" class="calendar meta col-sm-12 col-md-6">
-          </div>
-          <div class="meta deadline col-12 col-md-6">
-            Deadline in timezone from conference website:
-          </div>
-          <div class="meta col-sm-12 col-md-6">
-            <span class="deadline-time"></span>
-          </div>
-              <div class="meta col-sm-12 col-md-6">
-                Deadline in your local <span class="local-timezone">America/New_York</span> timezone:
-              </div>
-              <div class="local-timezone-hide meta col-sm-12 col-md-6">
-                <span class="deadline-local-time"></span>
-              </div>
-          </div>
-        <div id="conf-deadline-timer" class="row">
-          <div id="conf-timer" class="col-12">
-          </div>
-        </div>
+        <p id="conf-note" class="meta"></p>
+        <div id="conf-track-summary"></div>
+        <div id="conf-track-deadlines"></div>
       </div>
         <hr>
         <footer>
@@ -82,94 +62,39 @@ permalink:  /conference/
     </div>
     <script type="text/javascript" charset="utf-8">
     $(function() {
-        var url = new URL(window.location);
-        var conf = url.searchParams.get('id');
-
-        {% include load_data.js %}
-        {% include utils.js %}
-        {% include load_conferences.html %}
-
-        addUtcTimeZones();
-        try {
-          var local_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-          $('.local-timezone').text(local_timezone.toString());
-        }
-        catch(err) {
-          $('.local-timezone-hide').hide();
-        }
-
-        {% for conf in all_conferences %}
-            if (conf == "{{ conf.id }}") {
-
-              $('#conf-title-href').text("{{conf.title}} {{conf.year}}");
-              $('#conf-title-href').attr('href', "/conference?id={{conf.id}}");
-              // set badges
-              var subs = '{{conf.sub}}'.split(',');
-              for (let i = 0; i < subs.length; i++) {
-                var sub = subs[i].replace(" ", "");
-                var sub_element = document.createElement('span');
-                sub_element.className = "conf-sub conf-" + sub;
-                sub_element.textContent = sub2name[sub];
-                $('#conf-subs').append(sub_element);
-              }
-              // other
-              $('#conf-date').text("{{conf.date}}");
-              $('#conf-place').text("{{conf.place}}");
-              $('#conf-place').attr('href', "https://maps.google.com/?q={{conf.place}}")
-              $('#conf-website').text("{{conf.link}}");
-              $('#conf-website').attr('href', "{{conf.link}}");
-              {% if conf.paperslink %}
-                $('#conf-paperslink').text("{{conf.paperslink}}");
-                $('#conf-paperslink').attr('href', "{{conf.paperslink}}");
-              {% else %}
-                $('#conf-paperslink-div').hide();
-              {% endif %}
-              {% if conf.pwclink %}
-                $('#conf-pwclink').text("{{conf.pwclink}}");
-                $('#conf-pwclink').attr('href', "{{conf.pwclink}}");
-              {% else %}
-                $('#conf-pwclink-div').hide();
-              {% endif %}
-              var twitter_slug = '<a href="https://twitter.com/share" class="twitter-share-button" data-text="Countdown to the #{{ conf.title }}{{ conf.year }} deadline!" data-show-count="false" style="font-size:13px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8">';
-              $('#twitter-box').html(twitter_slug);
-              {% if conf.full_name %}
-                $('#conf-full-name').text("{{conf.full_name}}");
-              {% endif %}
-              {% if conf.deadline == "TBA" %}
-                $('#conf-timer').html("TBA");
-                $('.deadline-time').html("TBA");
-                $('.deadline-local-time').html("TBA");
-              {% else %}
-                // adjust date according to deadline timezone
-                var timezone = {% if conf.timezone %}"{{conf.timezone}}" {% else %} "America/New_York" {% endif %};
-                var confDeadline = moment.tz("{{conf.deadline}}", timezone);
-
-                // add calendar 
-                var conferenceDeadlineCalendar = createCalendarFromObject({
-                  id:  '{{conf.id}}',
-                  title: '{{conf.title}} {{conf.year}} deadline',
-                  date: confDeadline.toDate(),
-                  duration: 60,
-                })
-                document.querySelector('#conference-deadline').appendChild(conferenceDeadlineCalendar);
-
-                // render countdown timer
-                $('#conf-timer').countdown(confDeadline.toDate(), function(event) {
-                  $(this).html(event.strftime('%D days %Hh %Mm %Ss'));
-                });
-                $('.deadline-time').html(confDeadline.toString());
-
-                // convert deadline to local timezone
-                try {
-                  var localConfDeadline = moment.tz(confDeadline, local_timezone);
-                  $('.deadline-local-time').html(localConfDeadline.toString());
-                }
-                catch(err) {
-                  console.log("Error converting to local timezone.");
-                }
-              {% endif %}
-            }
-        {% endfor %}
+      {% include load_data.js %}
+      var id = new URL(window.location).searchParams.get('id');
+      var conferences = {{ site.data.conferences | jsonify }};
+      var conf = conferences.find(function(c) { return c.id === id; });
+      if (!conf) {
+        $('#conf-title-href').text('Conference not found');
+        $('#page-content').text('Choose a conference from the Countdowns page.');
+        return;
+      }
+      $('#conf-title-href').text(DeadlineTracks.title(conf));
+      $('#conf-full-name').text(conf.full_name || '');
+      $('#conf-date').text(conf.date);
+      $('#conf-place').text(conf.place).attr('href', 'https://maps.google.com/?q=' + encodeURIComponent(conf.place));
+      $('#conf-website').text(conf.link).attr('href', conf.link);
+      $('#conf-note').text(conf.note || '');
+      ['paperslink','pwclink'].forEach(function(key) {
+        if (conf[key]) $('#conf-' + key).text(conf[key]).attr('href', conf[key]);
+        else $('#conf-' + key + '-div').hide();
+      });
+      conf.sub.split(',').forEach(function(sub) {
+        var badge = document.createElement('span');badge.className='conf-sub';badge.textContent=sub2name[sub.trim()] || sub.trim();
+        document.getElementById('conf-subs').appendChild(badge);
+      });
+      var previousStatus;
+      function refresh() {
+        var now = Date.now();
+        var info=DeadlineTracks.summary(conf,now);
+        $('#conf-track-summary').text(info.next ? 'Next: ' + info.next.track.label + ' · ' + DeadlineTracks.countdown(info.next.date,now) : info.group === 'planning' ? 'Submission dates to be announced' : 'No upcoming confirmed submission deadline');
+        var signature=conf.tracks.map(function(t) {var d=DeadlineTracks.parse(t);return d && d.valueOf()>now;}).join();
+        if (signature!==previousStatus) DeadlineTracks.renderTable(document.getElementById('conf-track-deadlines'),conf,now);
+        previousStatus=signature;
+      }
+      refresh();setInterval(refresh,1000);
     });
     {% include google_analytics.js %}
     </script>

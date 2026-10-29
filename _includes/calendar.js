@@ -84,45 +84,25 @@
 function load_conference_list() {
   // Gather data
   var conf_list_all = [];
-  {% include load_conferences.html %}
-  {% for conf in all_conferences %}
-    // add deadlines in red
-    conf_list_all.push({
-      id: "{{conf.id}}-deadline",
-      abbreviation: "{{conf.id}}",
-      name: "{{conf.title}} {{conf.year}}",
-      color: "red",
-      location: "{{conf.place}}",
-      date: "{{conf.date}}",
-      hindex: "{{conf.hindex}}",
-      subject: "{{conf.sub}}",
-      startDate: Date.parse("{{conf.deadline}}"),
-      endDate: Date.parse("{{conf.deadline}}"),
-    });
-
-    // add Conferences in chosen color
-    {% if conf.start != "" %}
-      var color = "black";
-      {% assign conf_sub = conf.sub | split: ',' | first | strip %} // use first sub to choose color
-      {% for type in site.data.types %}
-            {% if conf_sub == type.sub %}
-                    color = "{{type.color}}";
-            {% endif %}
-      {% endfor %}
+  var conferences = {{ site.data.conferences | jsonify }};
+  conferences.forEach(function(conf) {
+    (conf.tracks || []).forEach(function(track) {
+      var date=DeadlineTracks.parse(track);
+      if (!date) return;
       conf_list_all.push({
-        id: "{{conf.id}}-conference",
-        abbreviation: "{{conf.id}}",
-        name: "{{conf.title}} {{conf.year}}",
-        color: color,
-        location: "{{conf.place}}",
-        date: "{{conf.date}}",
-        hindex: "{{conf.hindex}}",
-        subject: "{{conf.sub}}",
-        startDate: Date.parse("{{conf.start}}"),
-        endDate: Date.parse("{{conf.end}}"),
+        id: conf.id + '-' + track.id + '-deadline',
+        abbreviation: conf.id,
+        name: DeadlineTracks.title(conf) + ' — ' + track.label,
+        color: track.kind === 'poster' ? '#287b65' : '#bb2d3b',
+        location: conf.place, date: track.deadline + ' ' + track.timezone,
+        hindex: conf.hindex || '', subject: conf.sub,
+        startDate: date.toDate(), endDate: date.toDate()
       });
-    {% endif %}
-  {% endfor %}
+    });
+    if (conf.start && conf.end) {
+      conf_list_all.push({id:conf.id+'-conference',abbreviation:conf.id,name:DeadlineTracks.title(conf),color:'#637585',location:conf.place,date:conf.date,hindex:conf.hindex||'',subject:conf.sub,startDate:moment(conf.start,'YYYY-MM-DD',true).toDate(),endDate:moment(conf.end,'YYYY-MM-DD',true).toDate()});
+    }
+  });
 
   return conf_list_all;
 }
@@ -132,7 +112,7 @@ function update_filtering(data) {
 
   conf_list = conf_list_all.filter(v => {
     var commonValues = data.subs.filter(function (value) {
-      return v.subject.indexOf(value) > -1;
+      return v.subject.split(',').map(function(s) { return s.trim(); }).includes(value);
     });
     var subject_match = commonValues.length > 0;
     return subject_match;

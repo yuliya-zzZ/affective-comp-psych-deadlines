@@ -17,7 +17,7 @@ $("#subject-select").multiselect({
     update_filtering({ subs: subs, all_subs: all_subs });
   },
   onSelectAll: function (options) {
-    subs = all_subs;
+    subs = all_subs.slice();
     update_filtering({ subs: subs, all_subs: all_subs });
   },
   onDeselectAll: function (options) {
