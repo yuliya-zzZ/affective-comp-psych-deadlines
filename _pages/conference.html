@@ -89,7 +89,7 @@ permalink:  /conference/
       function refresh() {
         var now = Date.now();
         var info=DeadlineTracks.summary(conf,now);
-        $('#conf-track-summary').text(info.next ? 'Next: ' + info.next.track.label + ' · ' + DeadlineTracks.countdown(info.next.date,now) : info.group === 'planning' ? 'Submission dates to be announced' : 'No upcoming confirmed submission deadline');
+        $('#conf-track-summary').text(info.next ? 'Next: ' + info.next.track.label + ' · ' + DeadlineTracks.countdown(info.next.date,now) : info.group === 'rolling' ? 'Rolling journal submissions · no fixed deadline' : info.group === 'planning' ? 'Submission dates to be announced' : 'No upcoming confirmed submission deadline');
         var signature=conf.tracks.map(function(t) {var d=DeadlineTracks.parse(t);return d && d.valueOf()>now;}).join();
         if (signature!==previousStatus) DeadlineTracks.renderTable(document.getElementById('conf-track-deadlines'),conf,now);
         previousStatus=signature;

@@ -378,3 +378,34 @@ footer {
 .site-credits p { margin-bottom: 6px; text-align: left; }
 .developer-credit { font-size: 13px; color: #343a40; }
 .template-credit { font-size: 12px; line-height: 1.7; color: #62676b; }
+
+.directory-page { padding-bottom: 25px; }
+.directory-intro { max-width: 850px; color: #62676b; text-align: left; font-size: 14px; }
+.directory-nav { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 15px 0; }
+.directory-nav a { font-size: 14px; }
+.directory-nav [aria-current="page"] { color: #21644f; border-bottom: 2px solid #21644f; font-weight: 500; }
+.directory-nav span { margin-left: 5px; color: #62676b; font-size: 12px; }
+.directory-filters { display: grid; grid-template-columns: 1fr 270px auto; gap: 15px; align-items: end; padding: 16px; background: #f6f7f8; border: 1px solid #e9ecef; }
+.directory-filters label { font-size: 12px; font-weight: 500; margin-bottom: 5px; }
+.directory-filters input, .directory-filters select { font-size: 14px; }
+.directory-policy { margin: 14px 0 8px; color: #62676b; font-size: 12px; text-align: left; }
+.directory-count { font-size: 13px; color: #62676b; }
+.directory-section h2 { font-size: 22px; line-height: 1.4; margin: 26px 0 8px; }
+.venue-card { display: grid; grid-template-columns: 1fr 190px; gap: 20px; padding: 19px 0; border-bottom: 1px solid #e9ecef; }
+.venue-card[hidden], .directory-section[hidden] { display: none; }
+.venue-card h3 { font-size: 18px; line-height: 1.4; font-weight: 500; }
+.venue-focus { margin: 6px 0; font-size: 13px; text-align: left; }
+.venue-note { margin: 5px 0; font-size: 12px; color: #62676b; text-align: left; }
+.venue-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.venue-tags span { padding: 1px 5px; font-size: 11px; color: #2465bf; background: #f0f3f5; }
+.venue-links { font-size: 13px; }
+.venue-edition-label { display: block; color: #62676b; font-size: 11px; margin-top: 12px; }
+.venue-editions { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; font-size: 12px; }
+.track-rolling { color: #3b587d; background: #eaf0f7; }
+@media (max-width: 768px) {
+  .directory-filters { grid-template-columns: 1fr; }
+  .directory-filters button { justify-self: start; }
+  .venue-card { grid-template-columns: 1fr; gap: 10px; }
+  .venue-edition-label { margin-top: 6px; }
+  .venue-editions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+}

@@ -16,6 +16,8 @@
     var dated = (conf.tracks || []).map(function (track) { return {track: track, date: parse(track)}; }).filter(function (item) { return item.date; });
     var future = dated.filter(function (item) { return item.date.valueOf() > now; }).sort(function (a,b) { return a.date - b.date; });
     if (future.length) return {group: 'upcoming', next: future[0], sort: future[0].date.valueOf()};
+    var rolling=(conf.tracks || []).find(function(t) {return t.status==='rolling';});
+    if (rolling) return {group:'rolling', track:rolling, sort:conf.year};
     var pending = (conf.tracks || []).some(function (t) { return t.status === 'not_announced' || t.status === 'unverified'; });
     if (pending && (conf.year > new Date(now).getFullYear() || (conf.end && conf.end >= root.moment(now).format('YYYY-MM-DD')))) return {group: 'planning', sort: conf.year};
     return {group: 'past', sort: dated.length ? Math.max.apply(null, dated.map(function (d) {return d.date.valueOf();})) : 0};
@@ -60,10 +62,10 @@
         var time=element('time', date.format('MMM D, YYYY · HH:mm:ss') + ' ' + track.timezone);time.dateTime=date.toISOString();cell.appendChild(time);
         cell.appendChild(element('small',date.clone().local().format('MMM D, HH:mm:ss Z') + ' · your time','track-local'));
         status=date.valueOf()>now ? 'Upcoming' : 'Closed';
-      } else status=track.status === 'unverified' || track.status === 'confirmed' ? 'Needs verification' : 'Not announced';
-      if (!date) cell.appendChild(element('span',status === 'Needs verification' ? 'Not verified' : 'To be announced'));
+      } else status=track.status === 'rolling' ? 'Rolling' : track.status === 'not_applicable' ? 'Not applicable' : track.status === 'unverified' || track.status === 'confirmed' ? 'Needs verification' : 'Not announced';
+      if (!date) cell.appendChild(element('span',status === 'Rolling' ? 'No fixed submission deadline' : status === 'Not applicable' ? 'See submission format' : status === 'Needs verification' ? 'Not verified' : 'To be announced'));
       if (track.source) {var source=element('a','Official source','track-source');source.href=track.source;source.target='_blank';source.rel='noopener noreferrer';cell.appendChild(source);}
-      var state=document.createElement('td');state.appendChild(element('span',status,'track-status ' + (date && date.valueOf()>now ? 'track-open' : 'track-muted')));
+      var state=document.createElement('td');state.appendChild(element('span',status,'track-status ' + (status==='Rolling' ? 'track-rolling' : date && date.valueOf()>now ? 'track-open' : 'track-muted')));
       if (date && date.valueOf()>now) {var link=element('a','Add .ics','track-source');link.href='data:text/calendar;charset=utf-8,' + encodeURIComponent(ics(conf,track));link.download=conf.id+'-'+track.id+'.ics';state.appendChild(link);}
       row.appendChild(label);row.appendChild(cell);row.appendChild(state);body.appendChild(row);
     });

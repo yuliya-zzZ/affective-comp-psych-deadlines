@@ -1,0 +1,486 @@
+---
+conferences:
+- id: cogsci
+  name: Cognitive Science Society Annual Meeting (CogSci)
+  focus: Computational cognition · Theory of Mind · social reasoning
+  url: https://cognitivesciencesociety.org/
+  subjects:
+  - PSY
+  - TOM
+  - SOC
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: cogsci2028
+    year: 2028
+  - id: cogsci2027
+    year: 2027
+  - id: cogsci2026
+    year: 2026
+- id: sas
+  name: Society for Affective Science Annual Conference (SAS)
+  focus: Emotion · appraisal · affective science
+  url: https://society-for-affective-science.org/
+  subjects:
+  - AFF
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: sas2027
+    year: 2027
+  - id: sas2026
+    year: 2026
+- id: spsp
+  name: Society for Personality and Social Psychology Annual Convention (SPSP)
+  focus: Social psychology · social influence · empathy
+  url: https://spsp.org/events/annual-convention
+  subjects:
+  - SOC
+  - PSY
+  - AFF
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: acii
+  name: International Conference on Affective Computing and Intelligent Interaction
+    (ACII)
+  focus: Affective computing · emotion-aware AI
+  url: https://acii-conf.net/
+  subjects:
+  - AFF
+  - ML
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: acii2026
+    year: 2026
+- id: chi
+  name: ACM CHI Conference on Human Factors in Computing Systems (CHI)
+  focus: Human–AI interaction · AI companions · HCI
+  url: https://chi.acm.org/
+  subjects:
+  - HCI
+  - PSY
+  - ML
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: chi2027
+    year: 2027
+  - id: chi2026
+    year: 2026
+- id: icwsm
+  name: International Conference on Web and Social Media (ICWSM)
+  focus: Social media · computational social science
+  url: https://www.icwsm.org/
+  subjects:
+  - SOC
+  - NLP
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: icwsm2027
+    year: 2027
+  - id: icwsm2026
+    year: 2026
+- id: ic2s2
+  name: International Conference on Computational Social Science (IC2S2)
+  focus: Computational social psychology · digital behavior
+  url: https://ic2s2.org/
+  subjects:
+  - SOC
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: cscw
+  name: ACM Conference on Computer-Supported Cooperative Work and Social Computing
+    (CSCW)
+  focus: Online communities · AI-mediated support
+  url: https://cscw.acm.org/2027/
+  subjects:
+  - HCI
+  - SOC
+  - AI4MH
+  group: conference
+  note: 2027 papers use a rolling journal submission route; the conference has no
+    single paper deadline.
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: cscw2027
+    year: 2027
+- id: acl
+  name: Annual Meeting of the Association for Computational Linguistics (ACL)
+  focus: NLP · psychological language measurement
+  url: https://www.aclweb.org/portal/
+  subjects:
+  - NLP
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: acl2027
+    year: 2027
+- id: emnlp
+  name: Conference on Empirical Methods in Natural Language Processing (EMNLP)
+  focus: LLMs · mental-state NLP · dialogue
+  url: https://2026.emnlp.org/
+  subjects:
+  - NLP
+  - TOM
+  - AI4MH
+  group: conference
+  note: This link is the 2026 edition; a later submission date is not inferred from
+    it.
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: coling
+  name: International Conference on Computational Linguistics (COLING)
+  focus: Computational linguistics · language models
+  url: https://coling2025.org/
+  subjects:
+  - NLP
+  - ML
+  group: conference
+  note: The supplied official link is the 2025 edition, retained as an archive rather
+    than relabeled as a future call.
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: conll
+  name: Conference on Computational Natural Language Learning (CoNLL)
+  focus: NLP methods · human language modeling
+  url: https://www.conll.org/
+  subjects:
+  - NLP
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: clpsych
+  name: Workshop on Computational Linguistics and Clinical Psychology (CLPsych)
+  focus: Mental-health NLP · clinical language
+  url: https://clpsych.org/
+  subjects:
+  - NLP
+  - AI4MH
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: aps
+  name: Association for Psychological Science Annual Convention (APS)
+  focus: Broad psychological science
+  url: https://www.psychologicalscience.org/conventions
+  subjects:
+  - PSY
+  - AFF
+  - SOC
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: aps2027
+    year: 2027
+- id: psychonomic
+  name: Psychonomic Society Annual Meeting
+  focus: Cognitive psychology · reasoning · modeling
+  url: https://www.psychonomic.org/
+  subjects:
+  - PSY
+  - TOM
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: isre
+  name: International Society for Research on Emotion Conference (ISRE)
+  focus: Emotion theory · emotion regulation
+  url: https://www.isre.org/
+  subjects:
+  - AFF
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: facct
+  name: ACM Conference on Fairness, Accountability, and Transparency (FAccT)
+  focus: AI safety · mental-health AI ethics
+  url: https://facctconference.org/
+  subjects:
+  - HCI
+  - SOC
+  - AI4MH
+  - ML
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: facct2027
+    year: 2027
+- id: colm
+  name: Conference on Language Modeling (COLM)
+  focus: LLM behavior · representations · reasoning
+  url: https://colm.cc/
+  subjects:
+  - NLP
+  - ML
+  - TOM
+  group: conference
+  note: Official site moved from colmweb.org to colm.cc.
+  link_reviewed: '2026-10-29'
+  editions: []
+- id: iclr
+  name: International Conference on Learning Representations (ICLR)
+  focus: Representation learning · AI reasoning
+  url: https://iclr.cc/
+  subjects:
+  - ML
+  - TOM
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: iclr2027
+    year: 2027
+- id: neurips
+  name: Neural Information Processing Systems (NeurIPS)
+  focus: Computational modeling · AI / ML
+  url: https://neurips.cc/
+  subjects:
+  - ML
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: neurips2027
+    year: 2027
+- id: icmi
+  name: ACM International Conference on Multimodal Interaction (ICMI)
+  focus: Multimodal interaction · emotion · human-centered AI
+  url: https://icmi.acm.org/
+  subjects:
+  - HCI
+  - AFF
+  - PSY
+  group: conference
+  link_reviewed: '2026-10-29'
+  editions:
+  - id: icmi2026
+    year: 2026
+journals:
+- id: psychological-review
+  name: Psychological Review
+  focus: Psychological theory · computational models
+  url: https://www.apa.org/pubs/journals/rev
+  subjects:
+  - PSY
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: psychological-bulletin
+  name: Psychological Bulletin
+  focus: Meta-analysis · theoretical integration
+  url: https://www.apa.org/pubs/journals/bul
+  subjects:
+  - PSY
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: jpsp
+  name: Journal of Personality and Social Psychology (JPSP)
+  focus: Social cognition · social influence
+  url: https://www.apa.org/pubs/journals/psp
+  subjects:
+  - SOC
+  - PSY
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: jep-general
+  name: 'Journal of Experimental Psychology: General (JEP:G)'
+  focus: Experimental cognition · social reasoning
+  url: https://www.apa.org/pubs/journals/xge
+  subjects:
+  - PSY
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: emotion
+  name: Emotion
+  focus: Emotion · appraisal · emotion regulation
+  url: https://www.apa.org/pubs/journals/emo
+  subjects:
+  - AFF
+  - PSY
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: affective-science
+  name: Affective Science
+  focus: Interdisciplinary affective science
+  url: https://link.springer.com/journal/42761
+  subjects:
+  - AFF
+  - PSY
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: emotion-review
+  name: Emotion Review
+  focus: Emotion theory · conceptual reviews
+  url: https://journals.sagepub.com/home/emr
+  subjects:
+  - AFF
+  - PSY
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: spps
+  name: Social Psychological and Personality Science (SPPS)
+  focus: Social behavior · personality
+  url: https://journals.sagepub.com/home/spp
+  subjects:
+  - SOC
+  - PSY
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: cognition
+  name: Cognition
+  focus: Cognitive modeling · Theory of Mind
+  url: https://www.sciencedirect.com/journal/cognition
+  subjects:
+  - PSY
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: cognitive-science
+  name: Cognitive Science
+  focus: Computational and cognitive science
+  url: https://onlinelibrary.wiley.com/journal/15516709
+  subjects:
+  - PSY
+  - ML
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: topics-cognitive-science
+  name: Topics in Cognitive Science
+  focus: Thematic cognitive science research
+  url: https://onlinelibrary.wiley.com/journal/17568765
+  subjects:
+  - PSY
+  - TOM
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: computational-brain-behavior
+  name: Computational Brain & Behavior
+  focus: Computational cognitive models
+  url: https://link.springer.com/journal/42113
+  subjects:
+  - PSY
+  - ML
+  group: psychology
+  link_reviewed: '2026-10-29'
+- id: nature-human-behaviour
+  name: Nature Human Behaviour
+  focus: Human–AI interaction · social psychology
+  url: https://www.nature.com/nathumbehav/
+  subjects:
+  - HCI
+  - SOC
+  - PSY
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: communications-psychology
+  name: Communications Psychology
+  focus: Psychological research · interdisciplinary studies
+  url: https://www.nature.com/commspsychol/
+  subjects:
+  - PSY
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: nature-mental-health
+  name: Nature Mental Health
+  focus: Mental health · psychological well-being
+  url: https://www.nature.com/natmentalhealth/
+  subjects:
+  - AI4MH
+  - PSY
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: npj-digital-medicine
+  name: npj Digital Medicine
+  focus: Digital mental health · AI interventions
+  url: https://www.nature.com/npjdigitalmed/
+  subjects:
+  - AI4MH
+  - ML
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: jmir
+  name: Journal of Medical Internet Research (JMIR)
+  focus: Digital health · mental-health technology
+  url: https://www.jmir.org/
+  subjects:
+  - AI4MH
+  - HCI
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: ieee-tac
+  name: IEEE Transactions on Affective Computing
+  focus: Computational emotion · affective AI
+  url: https://www.computer.org/csdl/journal/ta
+  subjects:
+  - AFF
+  - ML
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: jcmc
+  name: Journal of Computer-Mediated Communication (JCMC)
+  focus: Online social interaction
+  url: https://academic.oup.com/jcmc
+  subjects:
+  - SOC
+  - HCI
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: computers-human-behavior
+  name: Computers in Human Behavior
+  focus: Technology use · social and psychological outcomes
+  url: https://www.sciencedirect.com/journal/computers-in-human-behavior
+  subjects:
+  - HCI
+  - PSY
+  - SOC
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: new-media-society
+  name: New Media & Society
+  focus: Social media · digital society
+  url: https://journals.sagepub.com/home/nms
+  subjects:
+  - SOC
+  - HCI
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: computational-social-science
+  name: Journal of Computational Social Science
+  focus: Computational methods for social research
+  url: https://link.springer.com/journal/42001
+  subjects:
+  - SOC
+  - ML
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: scientific-reports
+  name: Scientific Reports
+  focus: Broad empirical research
+  url: https://www.nature.com/srep/
+  subjects:
+  - PSY
+  - ML
+  group: human-ai
+  link_reviewed: '2026-10-29'
+- id: plos-one
+  name: PLOS ONE
+  focus: Broad empirical and methodological research
+  url: https://journals.plos.org/plosone/
+  subjects:
+  - PSY
+  - ML
+  group: human-ai
+  link_reviewed: '2026-10-29'

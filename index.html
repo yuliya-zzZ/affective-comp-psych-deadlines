@@ -126,6 +126,10 @@
           </div>
           {% endfor %}
         </div>
+        <div id="rolling_confs">
+          <h2 class="section-title">Rolling submissions</h2>
+          <p class="section-description">These routes have no single deadline. Check the official process and eligibility for the conference edition.</p>
+        </div>
         <div id="planning_confs">
           <h2 class="section-title">2027–2028 · awaiting submission dates</h2>
           <p class="section-description">Keep these editions on your radar. Dates and submission routes will be updated when their official calls are published.</p>
@@ -158,17 +162,18 @@
             var info = DeadlineTracks.summary(conf, now);
             card.dataset.deadlineSort = info.sort;
             if (previousGroups[conf.id] !== info.group) {
-              document.getElementById({upcoming:'coming_confs',planning:'planning_confs',past:'past_confs'}[info.group]).appendChild(card);
+              document.getElementById({upcoming:'coming_confs',rolling:'rolling_confs',planning:'planning_confs',past:'past_confs'}[info.group]).appendChild(card);
               previousGroups[conf.id] = info.group;
             }
             var signature=conf.tracks.map(function(t) {var d=DeadlineTracks.parse(t);return d && d.valueOf()>now;}).join();
             if (previousStatuses[conf.id] !== signature) DeadlineTracks.renderTable(card.querySelector('.track-deadlines'),conf,now);
             previousStatuses[conf.id]=signature;
             card.querySelector('.next-track').textContent = info.next ? 'Next: ' + info.next.track.label : '';
-            card.querySelector('.timer').textContent = info.next ? DeadlineTracks.countdown(info.next.date, now) : (info.group === 'planning' ? 'Dates pending' : conf.tracks.every(function(t) {return !DeadlineTracks.parse(t);}) ? 'Needs verification' : 'Submissions closed');
+            card.querySelector('.timer').textContent = info.next ? DeadlineTracks.countdown(info.next.date, now) : (info.group === 'rolling' ? 'Rolling submissions' : info.group === 'planning' ? 'Dates pending' : conf.tracks.every(function(t) {return !DeadlineTracks.parse(t);}) ? 'Needs verification' : 'Submissions closed');
             card.querySelector('.timer-small').textContent = card.querySelector('.timer').textContent;
           });
           sortCards('coming_confs', false);
+          sortCards('rolling_confs', false);
           sortCards('planning_confs', false);
           sortCards('past_confs', $('#sort-order').is(':checked'));
         }

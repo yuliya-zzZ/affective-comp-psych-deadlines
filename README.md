@@ -100,3 +100,23 @@ paper rounds. Official sources are linked beside each track. The source checks
 were performed on October 29, 2026. SAS 2026 submission details remain explicitly
 unverified. CogSci 2028's city is named on the Society's Get Involved page; its
 meeting dates and submission rules have not been announced there.
+
+## Conference and journal directories
+
+`_data/venues.yml` holds conference families and journals with official URLs,
+research-focus keywords and subject tags. `/conferences/` lists the conference
+families and links to tracked editions; `/journals/` lists the journal shortlist
+in two research groups. Both pages support text search and subject filtering.
+Journal entries are directories, not dated calls: no blanket deadline or open
+submission claim is assigned to them. Remove tracking query parameters from URLs.
+Some supplied conference links are historical editions; preserve their year in a
+note rather than reusing their dates for a future meeting. COLM's current official
+site is `https://colm.cc/` (the old domain announces the move).
+
+Tracks also support `rolling` (no fixed date, e.g. CSCW journal submissions) and
+`not_applicable` (e.g. an abstract-based convention without a full-manuscript
+route). Neither status generates a deadline or calendar event. Poster/abstract
+routes should follow the venue's actual call rather than a universal paper/poster
+assumption. APS 2027's 5 PM Eastern deadline and SAS 2027's UTC−12 deadline are
+recorded separately. ACL ARR submission and ACL commitment are separate tracks;
+FAccT's mandatory abstract prerequisite is displayed beside its paper deadline.

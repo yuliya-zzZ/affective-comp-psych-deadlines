@@ -349,3 +349,204 @@
     status: not_announced
     source: https://www.icwsm.org/2026/submit.html
     note: Do not assume the 2026 poster schedule applies to 2027.
+- title: SAS
+  year: 2027
+  id: sas2027
+  full_name: Society for Affective Science Annual Conference
+  link: https://society-for-affective-science.org/2027-sas-annual-conference/
+  deadline: TBA
+  date: March 4-6, 2027
+  place: San Diego, California, USA
+  sub: AFF,PSY,SOC
+  last_checked: '2026-10-29'
+  tracks:
+  - id: paper
+    label: Full paper
+    kind: paper
+    status: not_applicable
+    source: https://society-for-affective-science.org/abstracts/
+    note: The call requests abstracts, not full manuscripts.
+  - id: poster-results
+    label: Poster · New Results
+    kind: poster
+    status: confirmed
+    source: https://society-for-affective-science.org/abstracts/
+    deadline: '2026-11-02 23:59:59'
+    timezone: AoE
+  - id: poster-idea
+    label: Poster · New Idea
+    kind: poster
+    status: confirmed
+    source: https://society-for-affective-science.org/abstracts/
+    deadline: '2026-11-02 23:59:59'
+    timezone: AoE
+    note: Data are not required for this poster category.
+  - id: flash-talk
+    label: Flash talk abstract
+    kind: abstract
+    status: confirmed
+    source: https://society-for-affective-science.org/abstracts/
+    deadline: '2026-11-02 23:59:59'
+    timezone: AoE
+  note: The official call specifies Baker Island Time (UTC−12). Posters and flash
+    talks share the abstract deadline.
+- title: APS
+  year: 2027
+  id: aps2027
+  full_name: Association for Psychological Science Annual Convention
+  link: https://www.psychologicalscience.org/conventions/2027-aps-annual-convention
+  deadline: TBA
+  date: May 27-30, 2027
+  place: Seattle, Washington, USA
+  sub: PSY,AFF,SOC
+  last_checked: '2026-10-29'
+  tracks:
+  - id: paper
+    label: Full paper
+    kind: paper
+    status: not_applicable
+    source: https://www.psychologicalscience.org/conventions/2027-aps-annual-convention/call-for-submissions-faqs-webpage
+    note: This convention call requests research presentations rather than full manuscripts.
+  - id: talk
+    label: Submitted talk / flash talk abstract
+    kind: abstract
+    status: confirmed
+    source: https://www.psychologicalscience.org/conventions/2027-aps-annual-convention/call-for-submissions-faqs-webpage
+    deadline: '2026-12-01 17:00:00'
+    timezone: America/New_York
+  - id: poster
+    label: Poster · Standard / Pilot Project / Teaching
+    kind: poster
+    status: confirmed
+    source: https://www.psychologicalscience.org/conventions/2027-aps-annual-convention/call-for-submissions-faqs-webpage
+    deadline: '2026-12-01 17:00:00'
+    timezone: America/New_York
+  note: The official deadline is 5:00 PM Eastern Time, not midnight. Presentation
+    categories have one shared submission deadline.
+- title: ACL
+  year: 2027
+  id: acl2027
+  full_name: Annual Meeting of the Association for Computational Linguistics
+  link: https://2027.aclweb.org/
+  deadline: '2027-01-04 23:59:59'
+  date: August 17-22, 2027
+  place: Kyoto, Japan
+  sub: NLP,PSY,TOM
+  last_checked: '2026-10-29'
+  tracks:
+  - id: paper
+    label: Long / short paper · ARR submission
+    kind: paper
+    status: confirmed
+    source: https://2027.aclweb.org/calls/main/
+    deadline: '2027-01-04 23:59:59'
+    timezone: AoE
+  - id: commitment
+    label: ACL commitment
+    kind: paper
+    status: not_announced
+    source: https://2027.aclweb.org/calls/main/
+    note: ARR review and commitment to ACL are separate steps; the commitment date
+      is pending.
+  - id: poster
+    label: Separate poster submission
+    kind: poster
+    status: not_announced
+    source: https://2027.aclweb.org/calls/main/
+    note: No separate poster submission deadline is recorded from the main CFP.
+  note: Main papers use ARR, followed by a separate ACL commitment. Main conference
+    presentations are August 20-22.
+- title: FAccT
+  year: 2027
+  id: facct2027
+  full_name: ACM Conference on Fairness, Accountability, and Transparency
+  link: https://facctconference.org/2027/cfp.html
+  deadline: '2026-11-03 23:59:59'
+  date: June 21-24, 2027
+  place: Porto, Portugal
+  sub: HCI,SOC,AI4MH,ML
+  last_checked: '2026-10-29'
+  tracks:
+  - id: abstract
+    label: Mandatory paper abstract
+    kind: abstract
+    status: confirmed
+    source: https://facctconference.org/2027/cfp.html
+    deadline: '2026-10-27 23:59:59'
+    timezone: AoE
+  - id: paper
+    label: Full paper
+    kind: paper
+    status: confirmed
+    source: https://facctconference.org/2027/cfp.html
+    deadline: '2026-11-03 23:59:59'
+    timezone: AoE
+    note: The mandatory abstract deadline has passed. Paper submission is for authors
+      who already registered an abstract.
+  - id: poster
+    label: Separate poster submission
+    kind: poster
+    status: not_announced
+    source: https://facctconference.org/2027/cfp.html
+    note: No separate poster deadline is recorded from this paper CFP.
+  note: The abstract and full manuscript deadlines are separate; check the abstract
+    prerequisite before planning a submission.
+- title: ICLR
+  year: 2027
+  id: iclr2027
+  full_name: International Conference on Learning Representations
+  link: https://iclr.cc/Conferences/2027
+  deadline: '2026-09-25 23:59:59'
+  date: April 26-30, 2027
+  place: California, USA
+  sub: ML,TOM,NLP
+  last_checked: '2026-10-29'
+  tracks:
+  - id: abstract
+    label: Mandatory paper abstract
+    kind: abstract
+    status: confirmed
+    source: https://iclr.cc/Conferences/2027/CallForPapers
+    deadline: '2026-09-18 23:59:59'
+    timezone: AoE
+  - id: paper
+    label: Full paper
+    kind: paper
+    status: confirmed
+    source: https://iclr.cc/Conferences/2027/CallForPapers
+    deadline: '2026-09-25 23:59:59'
+    timezone: AoE
+  - id: poster
+    label: Separate poster submission
+    kind: poster
+    status: not_applicable
+    source: https://iclr.cc/Conferences/2027/CallForPapers
+    note: The main CFP provides abstract and paper deadlines; no independent poster
+      submission deadline is listed.
+  note: Accepted papers may be presented as talks or posters. The main paper deadline
+    is already closed.
+- title: CSCW
+  year: 2027
+  id: cscw2027
+  full_name: ACM Conference on Computer-Supported Cooperative Work and Social Computing
+  link: https://cscw.acm.org/2027/
+  deadline: TBA
+  date: October 16-20, 2027
+  place: Philadelphia, USA
+  sub: HCI,SOC,AI4MH
+  last_checked: '2026-10-29'
+  tracks:
+  - id: paper
+    label: Journal paper · PACM HCI/CSCW or ToCHI
+    kind: paper
+    status: rolling
+    source: https://cscw.acm.org/rolling.html
+    note: Conference presentation depends on journal acceptance and when the program
+      is finalized.
+  - id: poster
+    label: Poster / other participation
+    kind: poster
+    status: not_announced
+    source: https://cscw.acm.org/2027/
+  note: From 2027, there is no single paper-submission deadline. Journal acceptance
+    does not guarantee a slot at a particular conference edition.
