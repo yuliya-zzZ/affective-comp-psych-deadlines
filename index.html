@@ -71,10 +71,10 @@
             <div class="row conf-row">
                 <div class="col-6">
                   <span class="conf-title">
-                      <a title="{% if conf.full_name %}{{conf.full_name}}{% else %}Deadline{% endif %} Details" href="{{site.baseurl}}/conference?id={{ conf.id }}">{{conf.title}} {{conf.year}}</a>
+                      <a title="{% if conf.full_name %}{{conf.full_name | escape}}{% else %}{{conf.title | escape}}{% endif %} official website" href="{{conf.link | escape}}">{{conf.title}} {{conf.year}}</a>
                   </span>
                   <span class="conf-title-small">
-                      <a title="{% if conf.full_name %}{{conf.full_name}}{% else %}Deadline{% endif %} Details" href="{{site.baseurl}}/conference?id={{ conf.id }}">{{conf.title}} {{conf.year}}</a>
+                      <a title="{% if conf.full_name %}{{conf.full_name | escape}}{% else %}{{conf.title | escape}}{% endif %} official website" href="{{conf.link | escape}}">{{conf.title}} {{conf.year}}</a>
                   </span>
                   <span class="conf-title-icon">
                     <a title="Conference Website" href="{{conf.link}}" target="_blank"><img src="{{site.baseurl}}/static/img/203-earth.svg" class="badge-link" alt="Link to Conference Website" /></a>
