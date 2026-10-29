@@ -373,3 +373,8 @@ footer {
   .ConfItem .conf-date, .ConfItem .conf-place { display: inline; }
   .ConfItem .note { display: block; }
 }
+
+.site-credits { margin-top: 18px; padding: 18px 0; border-top: 1px solid #e3e6e8; }
+.site-credits p { margin-bottom: 6px; text-align: left; }
+.developer-credit { font-size: 13px; color: #343a40; }
+.template-credit { font-size: 12px; line-height: 1.7; color: #62676b; }
