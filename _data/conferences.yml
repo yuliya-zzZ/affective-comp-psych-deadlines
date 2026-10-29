@@ -3,7 +3,7 @@
   id: acii2026
   full_name: Affective Computing and Intelligent Interaction
   link: https://acii-conf.net/2026/
-  deadline: 2026-03-27 23:59:59
+  deadline: "2026-03-27 23:59:59"
   timezone: AoE
   date: September 7-10, 2026
   place: Puebla, Mexico
@@ -16,8 +16,8 @@
   id: chi2026
   full_name: ACM Conference on Human Factors in Computing Systems
   link: https://chi2026.acm.org/
-  deadline: 2025-09-11 23:59:59
-  abstract_deadline: 2025-09-04 23:59:59
+  deadline: "2025-09-11 23:59:59"
+  abstract_deadline: "2025-09-04 23:59:59"
   timezone: AoE
   date: April 13-17, 2026
   place: Barcelona, Spain
@@ -30,7 +30,7 @@
   id: sas2026
   full_name: Society for Affective Science Annual Conference
   link: https://society-for-affective-science.org/2026-sas-annual-conference
-  deadline: 2025-11-03 23:59:59
+  deadline: "2025-11-03 23:59:59"
   timezone: AoE
   date: March 12-14, 2026
   place: Pittsburgh, Pennsylvania, USA
@@ -43,8 +43,8 @@
   id: icmi2026
   full_name: ACM International Conference on Multimodal Interaction
   link: https://icmi.acm.org/2026
-  abstract_deadline: 2026-04-13 23:59:59
-  deadline: 2026-04-20 23:59:59
+  abstract_deadline: "2026-04-13 23:59:59"
+  deadline: "2026-04-20 23:59:59"
   timezone: AoE
   date: October 5-9, 2026
   place: Napoli, Italy
@@ -57,7 +57,7 @@
   id: cogsci2026
   full_name: Cognitive Science Society Annual Meeting
   link: https://cognitivesciencesociety.org/cogsci-2026
-  deadline: 2026-02-02 23:59:59
+  deadline: "2026-02-02 23:59:59"
   timezone: UTC-11
   date: July 22-25, 2026
   place: Rio de Janeiro, Brazil (hybrid)
@@ -70,7 +70,7 @@
   id: icwsm2026
   full_name: International Conference on Web and Social Media
   link: https://www.icwsm.org/2026/
-  deadline: 2026-01-15 23:59:59
+  deadline: "2026-01-15 23:59:59"
   timezone: AoE
   date: May 27-29, 2026
   place: Los Angeles, CA, USA
