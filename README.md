@@ -2,6 +2,10 @@
 
 Countdowns for affective science, computational psychology, CHI/HCI and emotion-related conferences
 
+Live website: [Affective Comp Psych Deadlines](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/)
+
+Browse the [conference directory](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/conferences/) or [journal directory](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/journals/).
+
 ## Contributing
 Contributions are very welcome!
 This fork focuses on affective science, computational psychology, CHI/HCI, and emotion-related fields.  
