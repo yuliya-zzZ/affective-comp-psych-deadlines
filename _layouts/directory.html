@@ -1,0 +1,69 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>{% include head.html %}</head>
+<body>
+  {% include header.html %}
+  <main class="container directory-page" data-directory="{{page.collection}}">
+    <div class="page-header">
+      <h1>{{page.title}}</h1>
+      <p class="directory-intro">{{page.intro}}</p>
+      <div class="directory-nav">
+        <a href="{{site.baseurl}}/conferences/" {% if page.collection == 'conferences' %}aria-current="page"{% endif %}>Conferences <span>{{site.data.venues.conferences | size}}</span></a>
+        <a href="{{site.baseurl}}/journals/" {% if page.collection == 'journals' %}aria-current="page"{% endif %}>Journals <span>{{site.data.venues.journals | size}}</span></a>
+        <a href="{{site.baseurl}}/">Submission countdowns →</a>
+      </div>
+    </div>
+    <form id="directory-filters" class="directory-filters" role="search">
+      <div>
+        <label for="venue-search">Search name or research focus</label>
+        <input id="venue-search" type="search" class="form-control" placeholder="e.g. emotion, Theory of Mind, NLP" autocomplete="off">
+      </div>
+      <div>
+        <label for="venue-subject">Research area</label>
+        <select id="venue-subject" class="form-control">
+          <option value="">All areas</option>
+          {% for type in site.data.types %}<option value="{{type.sub}}">{{type.name}}</option>{% endfor %}
+        </select>
+      </div>
+      <button type="button" id="directory-clear" class="btn btn-outline-secondary">Clear</button>
+    </form>
+    {% if page.collection == 'journals' %}
+    <p class="directory-policy">Use each journal’s official site to find author guidelines, submission portals and special-issue calls. This directory does not assign a single deadline or imply that every article type is currently open for submission.</p>
+    {% else %}
+    <p class="directory-policy">Conference names open the official site. Tracked editions link to their paper, poster and abstract deadlines. An entry without a tracked edition has no verified deadline in this tracker yet.</p>
+    {% endif %}
+    {% assign entries = site.data.venues[page.collection] %}
+    <p id="directory-count" class="directory-count" role="status" aria-live="polite">{{entries | size}} {{page.collection}}</p>
+    <p id="directory-empty" hidden>No matches. Try a broader search or clear the research-area filter.</p>
+    {% assign groups = entries | group_by: 'group' %}
+    {% for group in groups %}
+    <section class="directory-section" aria-label="{% if group.name == 'psychology' %}Social, Affective & Cognitive Psychology{% elsif group.name == 'human-ai' %}Human–AI Interaction, Digital Mental Health & Computational Social Science{% else %}Conferences and workshops{% endif %}">
+      {% if group.name == 'psychology' %}<h2>Social, Affective &amp; Cognitive Psychology</h2>{% elsif group.name == 'human-ai' %}<h2>Human–AI Interaction, Digital Mental Health &amp; Computational Social Science</h2>{% endif %}
+      {% for item in group.items %}
+      <article id="venue-{{item.id}}" class="venue-card" data-subjects="{{item.subjects | join: ','}}" data-search="{{item.name | append: ' ' | append: item.focus | escape}}">
+        <div class="venue-main">
+          <h3><a href="{{item.url | escape}}">{{item.name | escape}}</a></h3>
+          <p class="venue-focus">{{item.focus | escape}}</p>
+          {% if item.note %}<p class="venue-note">{{item.note | escape}}</p>{% endif %}
+          <div class="venue-tags">{% for subject in item.subjects %}<span>{{subject}}</span>{% endfor %}</div>
+        </div>
+        <div class="venue-links">
+          <a class="venue-official" href="{{item.url | escape}}">Official {% if page.collection == 'journals' %}journal{% else %}website{% endif %} ↗</a>
+          {% if page.collection == 'conferences' %}
+            {% if item.editions.size > 0 %}
+              <span class="venue-edition-label">Tracked editions</span>
+              <div class="venue-editions">{% for edition in item.editions %}<a href="{{site.baseurl}}/conference/?id={{edition.id}}">{{edition.year}} deadlines</a>{% endfor %}</div>
+            {% else %}<span class="venue-edition-label">Deadlines not yet tracked</span>{% endif %}
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endfor %}
+    <footer>{% include footer.html %}</footer>
+  </main>
+  <script src="{{site.baseurl}}/static/js/venue-directory.js" defer></script>
+</body>
+</html>

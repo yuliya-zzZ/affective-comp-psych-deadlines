@@ -2,6 +2,10 @@
 
 Countdowns for affective science, computational psychology, CHI/HCI and emotion-related conferences
 
+Live website: [Affective Comp Psych Deadlines](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/)
+
+Browse the [conference directory](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/conferences/) or [journal directory](https://yuliya-zzz.github.io/affective-comp-psych-deadlines/journals/).
+
 ## Contributing
 Contributions are very welcome!
 This fork focuses on affective science, computational psychology, CHI/HCI, and emotion-related fields.  
@@ -69,3 +73,54 @@ It uses:
 [19]: https://deadlines.cpusec.org/
 [20]: https://se-deadlines.github.io/
 [21]: https://awesome-mlss.com/
+
+## Submission tracks and future editions
+
+Use the acronym only in `title` (for example `CogSci`), with the edition in `year`.
+Each conference now has a `tracks` list, shared by Countdowns, conference details,
+and Calendar. `deadline` at conference level is retained for compatibility; the
+website uses track dates to decide which submissions are upcoming.
+
+```yaml
+tracks:
+  - id: poster
+    label: Poster
+    kind: poster # paper, poster, or abstract
+    status: confirmed # confirmed, not_announced, or unverified
+    deadline: "2027-01-21 23:59:59"
+    timezone: AoE
+    source: https://chi2027.acm.org/authors/posters/
+```
+
+Only `confirmed` tracks with a complete timestamp and recognized timezone get a
+countdown or calendar export. Use `not_announced` with no deadline for future
+calls; never insert `estimated ...` into a timestamp. Use `unverified` when an
+existing claim cannot be checked. Add `note` to explain track-specific rules and
+`last_checked` to record the verification date. A poster presentation of a full
+paper is different from a separate poster/extended-abstract submission route.
+
+The current update includes CogSci 2027 and 2028, CHI 2027 Posters, and ICWSM 2027
+paper rounds. Official sources are linked beside each track. The source checks
+were performed on October 29, 2026. SAS 2026 submission details remain explicitly
+unverified. CogSci 2028's city is named on the Society's Get Involved page; its
+meeting dates and submission rules have not been announced there.
+
+## Conference and journal directories
+
+`_data/venues.yml` holds conference families and journals with official URLs,
+research-focus keywords and subject tags. `/conferences/` lists the conference
+families and links to tracked editions; `/journals/` lists the journal shortlist
+in two research groups. Both pages support text search and subject filtering.
+Journal entries are directories, not dated calls: no blanket deadline or open
+submission claim is assigned to them. Remove tracking query parameters from URLs.
+Some supplied conference links are historical editions; preserve their year in a
+note rather than reusing their dates for a future meeting. COLM's current official
+site is `https://colm.cc/` (the old domain announces the move).
+
+Tracks also support `rolling` (no fixed date, e.g. CSCW journal submissions) and
+`not_applicable` (e.g. an abstract-based convention without a full-manuscript
+route). Neither status generates a deadline or calendar event. Poster/abstract
+routes should follow the venue's actual call rather than a universal paper/poster
+assumption. APS 2027's 5 PM Eastern deadline and SAS 2027's UTC−12 deadline are
+recorded separately. ACL ARR submission and ACL commitment are separate tracks;
+FAccT's mandatory abstract prerequisite is displayed beside its paper deadline.
